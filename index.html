@@ -132,74 +132,75 @@
           </div>
         </nav>
       </div>
+    </header>
 
-      <div class="fixed inset-0 z-[120] hidden" id="mobileMenu" aria-hidden="true">
-        <div class="absolute inset-0 bg-black/75 backdrop-blur-md" data-menu-close="true"></div>
-        <div
-          class="absolute right-0 top-0 h-full w-[88%] max-w-sm translate-x-full overflow-hidden border-l border-white/10 bg-surface/95 p-5 shadow-[0_30px_120px_rgba(0,0,0,.70)] backdrop-blur-xl transition-transform duration-200 ease-out"
-          data-menu-panel="true"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu"
-        >
-          <div class="mb-3 flex items-center justify-between gap-3">
-            <div class="font-sora text-sm font-bold tracking-tight">Navigation</div>
-            <button
-              class="rounded-full border border-white/12 bg-bg/55 px-3 py-2 text-xs font-semibold text-white/95 hover:bg-bg/70 transition"
-              type="button"
-              data-menu-close="true"
-              aria-label="Close menu"
-            >
-              Close
-            </button>
-          </div>
-          <div class="flex flex-col gap-2" role="list">
-            <a
-              class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-              role="listitem"
-              href="#top"
-              data-menu-link="true"
-              >Home</a
-            >
-            <a
-              class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-              role="listitem"
-              href="#services"
-              data-menu-link="true"
-              >Services</a
-            >
-            <a
-              class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-              role="listitem"
-              href="#process"
-              data-menu-link="true"
-              >Process</a
-            >
-            <a
-              class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-              role="listitem"
-              href="#why"
-              data-menu-link="true"
-              >Why</a
-            >
-            <a
-              class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-              role="listitem"
-              href="#faq"
-              data-menu-link="true"
-              >FAQ</a
-            >
-            <a
-              class="rounded-2xl border border-secondary/35 bg-secondary/12 px-4 py-3 font-bold text-white/95 hover:bg-secondary/20 transition"
-              role="listitem"
-              href="#contact"
-              data-menu-link="true"
-              >Contact</a
-            >
-          </div>
+    <!-- Fixed overlay must sit outside <header>: backdrop-blur on the header can break fixed positioning / stacking. -->
+    <div class="fixed inset-0 z-[200] hidden" id="mobileMenu" aria-hidden="true">
+      <div class="absolute inset-0 bg-black/75 backdrop-blur-md" data-menu-close="true"></div>
+      <div
+        class="absolute right-0 top-0 h-full w-[88%] max-w-sm translate-x-full overflow-hidden border-l border-white/10 bg-surface/95 p-5 shadow-[0_30px_120px_rgba(0,0,0,.70)] backdrop-blur-xl transition-transform duration-200 ease-out"
+        data-menu-panel="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+      >
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-white/10 pb-3">
+          <div class="font-sora text-sm font-bold tracking-tight">Navigation</div>
+          <button
+            class="rounded-full border border-white/20 bg-transparent px-3 py-2 text-xs font-semibold text-white/95 hover:bg-white/10 transition"
+            type="button"
+            data-menu-close="true"
+            aria-label="Close menu"
+          >
+            Close
+          </button>
+        </div>
+        <div class="flex flex-col gap-2" role="list">
+          <a
+            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            role="listitem"
+            href="#top"
+            data-menu-link="true"
+            >Home</a
+          >
+          <a
+            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            role="listitem"
+            href="#services"
+            data-menu-link="true"
+            >Services</a
+          >
+          <a
+            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            role="listitem"
+            href="#process"
+            data-menu-link="true"
+            >Process</a
+          >
+          <a
+            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            role="listitem"
+            href="#why"
+            data-menu-link="true"
+            >Why</a
+          >
+          <a
+            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            role="listitem"
+            href="#faq"
+            data-menu-link="true"
+            >FAQ</a
+          >
+          <a
+            class="rounded-2xl border border-secondary/35 bg-secondary/12 px-4 py-3 font-bold text-white/95 hover:bg-secondary/20 transition"
+            role="listitem"
+            href="#contact"
+            data-menu-link="true"
+            >Contact</a
+          >
         </div>
       </div>
-    </header>
+    </div>
 
     <main id="main">
       <section id="top" class="relative scroll-mt-24 overflow-hidden py-16 md:py-20" data-section-root="hero">

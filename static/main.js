@@ -352,7 +352,7 @@
           // ensure the panel animates in even if toggled quickly
           panel.classList.remove("translate-x-full");
         }
-        const closeBtn = menu.querySelector("[data-menu-close]");
+        const closeBtn = menu.querySelector('button[data-menu-close="true"]');
         if (closeBtn instanceof HTMLElement) closeBtn.focus();
       } else {
         if (panel instanceof HTMLElement) {
