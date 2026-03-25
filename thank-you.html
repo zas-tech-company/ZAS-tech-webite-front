@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081120" />
+    <title>Thanks — ZAS Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#081120",
+              surface: "#0F172A",
+              primary: "#2563EB",
+              secondary: "#10B981",
+              muted: "#94A3B8",
+              text: "#F8FAFC",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "Segoe UI", "Roboto", "Arial", "sans-serif"],
+              sora: ["Sora", "Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-bg text-text font-sans">
+    <main class="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center px-6 py-16 text-center">
+      <div class="w-full rounded-3xl border border-white/10 bg-surface/40 p-8 backdrop-blur-xl">
+        <h1 class="font-sora text-3xl font-extrabold tracking-tight">Message received</h1>
+        <p class="mt-3 text-muted">We’ll respond with a clear next step.</p>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a
+            class="rounded-full border border-primary/60 bg-primary/90 px-4 py-3 font-semibold shadow-[0_18px_55px_rgba(37,99,235,.26)] hover:bg-primary transition"
+            href="./index.html#top"
+            >Back to Home</a
+          >
+          <a
+            class="rounded-full border border-white/10 bg-surface/20 px-4 py-3 font-semibold hover:bg-surface/30 transition"
+            href="mailto:contact@zas.tech?subject=Follow%20up%20—%20ZAS%20Tech"
+            >Email Directly</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+

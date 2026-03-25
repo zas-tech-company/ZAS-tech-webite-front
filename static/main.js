@@ -338,6 +338,7 @@
   (() => {
     const btn = document.querySelector('[data-menu-btn="true"]');
     const menu = document.getElementById("mobileMenu");
+    const panel = menu?.querySelector?.('[data-menu-panel="true"]');
     if (!(btn instanceof HTMLButtonElement)) return;
     if (!(menu instanceof HTMLElement)) return;
 
@@ -347,9 +348,16 @@
       menu.classList.toggle("hidden", !open);
       document.body.style.overflow = open ? "hidden" : "";
       if (open) {
+        if (panel instanceof HTMLElement) {
+          // ensure the panel animates in even if toggled quickly
+          panel.classList.remove("translate-x-full");
+        }
         const closeBtn = menu.querySelector("[data-menu-close]");
         if (closeBtn instanceof HTMLElement) closeBtn.focus();
       } else {
+        if (panel instanceof HTMLElement) {
+          panel.classList.add("translate-x-full");
+        }
         btn.focus();
       }
     };
@@ -378,6 +386,9 @@
       },
       { passive: true },
     );
+
+    // start closed with correct transform state
+    if (panel instanceof HTMLElement) panel.classList.add("translate-x-full");
   })();
 })();
 
