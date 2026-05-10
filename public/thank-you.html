@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#030712" />
-    <meta name="description" content="Thank you — ZAS Tech has received your message." />
-    <title>Message received — ZAS Tech</title>
+    <meta name="description" content="Thank you — ZAS Tech has received your message." data-i18n="thanks.metaDesc" />
+    <title data-i18n="thanks.title">Message received — ZAS Tech</title>
     <link rel="icon" href="../assets/logo.JPG" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -90,6 +90,12 @@
           animation: none !important;
         }
       }
+      body.zas-rtl {
+        font-family: "Noto Sans Arabic", Inter, system-ui, sans-serif;
+      }
+      body.zas-rtl .font-display {
+        font-family: "Noto Sans Arabic", "Syne", Inter, system-ui, sans-serif;
+      }
     </style>
   </head>
   <body class="relative min-h-screen overflow-x-hidden bg-black bg-hero-fade font-sans text-zas-text antialiased">
@@ -150,7 +156,49 @@
       }
     </style>
 
-    <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-lg flex-col items-center justify-center px-6 py-16 text-center md:max-w-xl">
+    <header
+      class="sticky top-0 z-50 border-b border-white/[0.06] bg-black/35 backdrop-blur-2xl shadow-[0_12px_48px_rgba(0,0,0,0.35)] supports-[backdrop-filter]:bg-black/25"
+    >
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3.5">
+        <a class="font-display text-sm font-extrabold tracking-[0.12em] text-white" href="../index.html#top">ZAS Tech</a>
+        <div
+          class="zas-lang-track inline-flex shrink-0 items-center gap-0.5 rounded-2xl border border-white/[0.09] bg-gradient-to-b from-white/[0.07] to-black/30 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          role="group"
+          data-i18n-aria="lang.label"
+          aria-label="Language"
+        >
+          <button
+            type="button"
+            data-lang-btn="en"
+            data-i18n="lang.en"
+            aria-pressed="false"
+            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] md:tracking-wide aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+          >
+            English
+          </button>
+          <button
+            type="button"
+            data-lang-btn="ku"
+            data-i18n="lang.ku"
+            aria-pressed="false"
+            class="whitespace-nowrap rounded-xl px-2 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-2.5 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+          >
+            Kurdish
+          </button>
+          <button
+            type="button"
+            data-lang-btn="ar"
+            data-i18n="lang.ar"
+            aria-pressed="false"
+            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+          >
+            Arabic
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-lg flex-col items-center justify-center px-6 py-16 text-center md:max-w-xl">
       <div class="zas-glass relative w-full px-8 py-12 shadow-[0_24px_80px_rgba(0,0,0,0.55)] md:px-12 md:py-14">
         <div class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-teal-400/35 to-transparent" aria-hidden="true"></div>
 
@@ -178,22 +226,25 @@
         </div>
 
         <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/95">ZAS Tech</p>
-        <h1 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">Message received</h1>
-        <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-zas-muted">We’ll respond with clear next steps.</p>
+        <h1 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl" data-i18n="thanks.h1">Message received</h1>
+        <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-zas-muted" data-i18n="thanks.p">We’ll respond with clear next steps.</p>
 
         <div class="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
           <a
             class="inline-flex items-center justify-center rounded-full border border-teal-400/55 bg-gradient-to-r from-teal-400 to-cyan-500 px-7 py-3.5 font-semibold text-black shadow-glow transition duration-300 hover:border-teal-300 hover:shadow-[0_0_56px_rgba(45,212,191,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-400/35"
             href="../index.html#top"
+            data-i18n="thanks.home"
             >Back to Home</a
           >
           <a
             class="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-zas-panel/40 px-7 py-3.5 font-semibold text-white shadow-glass backdrop-blur-xl transition duration-300 hover:border-teal-400/45 hover:bg-teal-500/10 hover:shadow-[0_0_40px_rgba(45,212,191,0.12)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/15"
             href="mailto:info@zas-tech.krd"
+            data-i18n="thanks.email"
             >Email Directly</a
           >
         </div>
       </div>
     </main>
+    <script src="../static/i18n.js" defer></script>
   </body>
 </html>

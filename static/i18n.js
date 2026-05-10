@@ -547,14 +547,21 @@
   }
 
   function applyMeta(lang) {
-    const title = t(lang, "meta.title");
-    document.title = title;
+    if (!document.querySelector("title[data-i18n]")) {
+      document.title = t(lang, "meta.title");
+    }
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", t(lang, "meta.description"));
+    if (desc && !desc.hasAttribute("data-i18n")) {
+      desc.setAttribute("content", t(lang, "meta.description"));
+    }
     const ogT = document.querySelector('meta[property="og:title"]');
-    if (ogT) ogT.setAttribute("content", t(lang, "meta.ogTitle"));
+    if (ogT && !ogT.hasAttribute("data-i18n")) {
+      ogT.setAttribute("content", t(lang, "meta.ogTitle"));
+    }
     const ogD = document.querySelector('meta[property="og:description"]');
-    if (ogD) ogD.setAttribute("content", t(lang, "meta.ogDesc"));
+    if (ogD && !ogD.hasAttribute("data-i18n")) {
+      ogD.setAttribute("content", t(lang, "meta.ogDesc"));
+    }
   }
 
   function applyTranslations(lang) {
@@ -564,6 +571,11 @@
       const text = t(lang, key);
       if (el.tagName === "TITLE") {
         el.textContent = text;
+        document.title = text;
+        return;
+      }
+      if (el instanceof HTMLMetaElement) {
+        el.setAttribute("content", text);
         return;
       }
       el.textContent = text;
@@ -587,12 +599,6 @@
     document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
       if (!(btn instanceof HTMLElement)) return;
       const isActive = btn.getAttribute("data-lang-btn") === lang;
-      btn.classList.toggle("border-teal-400/50", isActive);
-      btn.classList.toggle("bg-teal-500/15", isActive);
-      btn.classList.toggle("text-white", isActive);
-      btn.classList.toggle("border-white/10", !isActive);
-      btn.classList.toggle("bg-white/5", !isActive);
-      btn.classList.toggle("text-white/70", !isActive);
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
 
