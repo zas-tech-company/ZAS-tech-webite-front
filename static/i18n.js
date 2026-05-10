@@ -596,6 +596,10 @@
     applyMeta(lang);
     applyDocumentLang(lang);
 
+    document.querySelectorAll("[data-lang-current]").forEach((el) => {
+      el.textContent = t(lang, `lang.${lang}`);
+    });
+
     document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
       if (!(btn instanceof HTMLElement)) return;
       const isActive = btn.getAttribute("data-lang-btn") === lang;
@@ -611,9 +615,49 @@
     applyTranslations(lang);
   }
 
+  function closeAllLangDropdowns() {
+    document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
+      const toggle = root.querySelector("[data-lang-dropdown-toggle]");
+      const panel = root.querySelector("[data-lang-dropdown-panel]");
+      if (toggle instanceof HTMLElement) toggle.setAttribute("aria-expanded", "false");
+      if (panel instanceof HTMLElement) panel.hidden = true;
+    });
+  }
+
+  function initLangDropdown() {
+    document.querySelectorAll("[data-lang-dropdown]").forEach((root) => {
+      const toggle = root.querySelector("[data-lang-dropdown-toggle]");
+      const panel = root.querySelector("[data-lang-dropdown-panel]");
+      if (!(toggle instanceof HTMLElement) || !(panel instanceof HTMLElement)) return;
+
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const wasOpen = toggle.getAttribute("aria-expanded") === "true";
+        closeAllLangDropdowns();
+        if (!wasOpen) {
+          toggle.setAttribute("aria-expanded", "true");
+          panel.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener("click", () => {
+      closeAllLangDropdowns();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAllLangDropdowns();
+    });
+
+    window.addEventListener("zas:languagechange", () => {
+      closeAllLangDropdowns();
+    });
+  }
+
   function init() {
     const lang = getStoredLang();
     applyTranslations(lang);
+    initLangDropdown();
     document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const l = btn.getAttribute("data-lang-btn");

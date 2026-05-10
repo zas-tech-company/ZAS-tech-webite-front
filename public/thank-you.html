@@ -96,6 +96,17 @@
       body.zas-rtl .font-display {
         font-family: "Noto Sans Arabic", "Syne", Inter, system-ui, sans-serif;
       }
+      [data-lang-dropdown-chevron] {
+        transition: transform 0.25s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-lang-dropdown-chevron] {
+          transition: none;
+        }
+      }
+      [data-lang-dropdown-toggle][aria-expanded="true"] [data-lang-dropdown-chevron] {
+        transform: rotate(180deg);
+      }
     </style>
   </head>
   <body class="relative min-h-screen overflow-x-hidden bg-black bg-hero-fade font-sans text-zas-text antialiased">
@@ -159,41 +170,73 @@
     <header
       class="sticky top-0 z-50 border-b border-white/[0.06] bg-black/35 backdrop-blur-2xl shadow-[0_12px_48px_rgba(0,0,0,0.35)] supports-[backdrop-filter]:bg-black/25"
     >
-      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3.5">
-        <a class="font-display text-sm font-extrabold tracking-[0.12em] text-white" href="../index.html#top">ZAS Tech</a>
-        <div
-          class="zas-lang-track inline-flex shrink-0 items-center gap-0.5 rounded-2xl border border-white/[0.09] bg-gradient-to-b from-white/[0.07] to-black/30 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-          role="group"
-          data-i18n-aria="lang.label"
-          aria-label="Language"
-        >
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-3.5">
+        <a class="font-display min-w-0 truncate text-xs font-extrabold tracking-[0.1em] text-white sm:text-sm sm:tracking-[0.12em]" href="../index.html#top">ZAS Tech</a>
+        <div class="relative shrink-0" data-lang-dropdown>
           <button
             type="button"
-            data-lang-btn="en"
-            data-i18n="lang.en"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] md:tracking-wide aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+            id="zas-lang-trigger-thanks"
+            data-lang-dropdown-toggle
+            data-i18n-aria="lang.label"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-controls="zas-lang-menu-thanks"
+            class="inline-flex min-h-9 max-w-[min(44vw,11rem)] items-center gap-1 rounded-lg border border-white/[0.1] bg-zas-panel/55 px-2 py-1.5 text-[10px] font-semibold leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 hover:border-teal-400/35 hover:bg-teal-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 aria-expanded:border-teal-400/40 aria-expanded:bg-teal-500/12 aria-expanded:shadow-[0_0_28px_rgba(45,212,191,0.15)] sm:min-h-[2.75rem] sm:max-w-none sm:gap-2 sm:rounded-xl sm:px-3 sm:py-2 sm:text-xs"
           >
-            English
+            <span class="min-w-0 flex-1 truncate text-start" data-lang-current>English</span>
+            <svg
+              class="h-3.5 w-3.5 shrink-0 text-white/75 sm:h-4 sm:w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+              data-lang-dropdown-chevron
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
-          <button
-            type="button"
-            data-lang-btn="ku"
-            data-i18n="lang.ku"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-2.5 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+          <div
+            id="zas-lang-menu-thanks"
+            data-lang-dropdown-panel
+            hidden
+            role="listbox"
+            aria-labelledby="zas-lang-trigger-thanks"
+            class="absolute end-0 top-full z-[70] mt-2 min-w-[12rem] overflow-hidden rounded-xl border border-white/[0.1] bg-zas-panel/[0.97] py-1 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-2xl"
           >
-            Kurdish
-          </button>
-          <button
-            type="button"
-            data-lang-btn="ar"
-            data-i18n="lang.ar"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
-          >
-            Arabic
-          </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="en"
+              data-i18n="lang.en"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              English
+            </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="ku"
+              data-i18n="lang.ku"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              Kurdish
+            </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="ar"
+              data-i18n="lang.ar"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              Arabic
+            </button>
+          </div>
         </div>
       </div>
     </header>

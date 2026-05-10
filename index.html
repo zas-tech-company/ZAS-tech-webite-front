@@ -220,6 +220,25 @@
       body.zas-rtl .font-mono {
         font-family: ui-monospace, "Cascadia Mono", monospace;
       }
+      [data-lang-dropdown-chevron] {
+        transition: transform 0.25s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-lang-dropdown-chevron] {
+          transition: none;
+        }
+      }
+      [data-lang-dropdown-toggle][aria-expanded="true"] [data-lang-dropdown-chevron] {
+        transform: rotate(180deg);
+      }
+      html {
+        overflow-x: hidden;
+      }
+      @media (max-width: 639px) {
+        .zas-site-header-inner {
+          column-gap: 0.5rem;
+        }
+      }
     </style>
   </head>
 
@@ -280,10 +299,12 @@
     <header
       class="sticky top-0 z-50 border-b border-white/[0.06] bg-black/35 backdrop-blur-2xl shadow-[0_12px_48px_rgba(0,0,0,0.35)] supports-[backdrop-filter]:bg-black/25"
     >
-      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3.5">
-        <a class="group flex items-center gap-3 select-none" href="#top" data-i18n-aria="aria.logo">
+      <div
+        class="zas-site-header-inner mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-3.5"
+      >
+        <a class="group flex min-w-0 shrink items-center gap-2 sm:gap-3 select-none" href="#top" data-i18n-aria="aria.logo">
           <span
-            class="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-teal-400/30 bg-zas-panel/60 shadow-[0_0_24px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50 group-hover:shadow-[0_0_36px_rgba(45,212,191,0.28)]"
+            class="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-teal-400/30 bg-zas-panel/60 shadow-[0_0_24px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50 group-hover:shadow-[0_0_36px_rgba(45,212,191,0.28)] sm:h-11 sm:w-11 sm:rounded-2xl"
           >
             <img
               class="h-full w-full object-cover"
@@ -296,43 +317,75 @@
             />
             <span class="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-400/10 to-cyan-500/5" aria-hidden="true"></span>
           </span>
-          <span class="font-display text-sm font-extrabold tracking-[0.12em] text-white">ZAS Tech</span>
+          <span class="font-display truncate text-xs font-extrabold tracking-[0.1em] text-white sm:text-sm sm:tracking-[0.12em]">ZAS Tech</span>
         </a>
 
-        <div class="flex flex-1 items-center justify-end gap-2 sm:gap-3">
-        <div
-          class="zas-lang-track inline-flex shrink-0 items-center gap-0.5 rounded-2xl border border-white/[0.09] bg-gradient-to-b from-white/[0.07] to-black/30 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-          role="group"
-          data-i18n-aria="lang.label"
-          aria-label="Language"
-        >
+        <div class="flex min-w-0 flex-1 items-center justify-end gap-1.5 sm:gap-3">
+        <div class="relative shrink-0" data-lang-dropdown>
           <button
             type="button"
-            data-lang-btn="en"
-            data-i18n="lang.en"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] md:tracking-wide aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+            id="zas-lang-trigger"
+            data-lang-dropdown-toggle
+            data-i18n-aria="lang.label"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-controls="zas-lang-menu"
+            class="inline-flex min-h-9 max-w-[min(44vw,11rem)] items-center gap-1 rounded-lg border border-white/[0.1] bg-zas-panel/55 px-2 py-1.5 text-[10px] font-semibold leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition duration-300 hover:border-teal-400/35 hover:bg-teal-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 aria-expanded:border-teal-400/40 aria-expanded:bg-teal-500/12 aria-expanded:shadow-[0_0_28px_rgba(45,212,191,0.15)] sm:min-h-[2.75rem] sm:max-w-none sm:gap-2 sm:rounded-xl sm:px-3 sm:py-2 sm:text-xs"
           >
-            English
+            <span class="min-w-0 flex-1 truncate text-start" data-lang-current>English</span>
+            <svg
+              class="h-3.5 w-3.5 shrink-0 text-white/75 sm:h-4 sm:w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+              data-lang-dropdown-chevron
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
-          <button
-            type="button"
-            data-lang-btn="ku"
-            data-i18n="lang.ku"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-2.5 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
+          <div
+            id="zas-lang-menu"
+            data-lang-dropdown-panel
+            hidden
+            role="listbox"
+            aria-labelledby="zas-lang-trigger"
+            class="absolute end-0 top-full z-[70] mt-2 min-w-[12rem] overflow-hidden rounded-xl border border-white/[0.1] bg-zas-panel/[0.97] py-1 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-2xl"
           >
-            Kurdish
-          </button>
-          <button
-            type="button"
-            data-lang-btn="ar"
-            data-i18n="lang.ar"
-            aria-pressed="false"
-            class="whitespace-nowrap rounded-xl px-2.5 py-2 text-[10px] font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/45 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:text-[11px] aria-[pressed=true]:bg-gradient-to-b aria-[pressed=true]:from-teal-400/45 aria-[pressed=true]:to-teal-700/35 aria-[pressed=true]:text-white aria-[pressed=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_28px_rgba(45,212,191,0.28)] aria-[pressed=false]:text-white/45 aria-[pressed=false]:hover:bg-white/[0.05] aria-[pressed=false]:hover:text-white/95"
-          >
-            Arabic
-          </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="en"
+              data-i18n="lang.en"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              English
+            </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="ku"
+              data-i18n="lang.ku"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              Kurdish
+            </button>
+            <button
+              type="button"
+              role="option"
+              data-lang-btn="ar"
+              data-i18n="lang.ar"
+              aria-pressed="false"
+              class="flex w-full items-center gap-2 border-s-2 border-transparent px-4 py-2.5 text-start text-sm font-medium text-white/90 transition hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none aria-[pressed=true]:border-teal-400 aria-[pressed=true]:bg-teal-500/15 aria-[pressed=true]:text-teal-50"
+            >
+              Arabic
+            </button>
+          </div>
         </div>
 
         <nav class="hidden md:block" data-i18n-aria="aria.primaryNav" aria-label="Primary">
@@ -383,16 +436,16 @@
         </nav>
 
         <button
-          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] shadow-glass transition duration-300 hover:border-teal-400/40 hover:bg-teal-500/10 hover:shadow-[0_0_28px_rgba(45,212,191,0.15)] md:hidden"
+          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] shadow-glass transition duration-300 hover:border-teal-400/40 hover:bg-teal-500/10 hover:shadow-[0_0_28px_rgba(45,212,191,0.15)] sm:h-11 sm:w-11 sm:rounded-xl md:hidden"
           type="button"
           data-i18n-aria="aria.menuOpen"
           aria-controls="mobileMenu"
           aria-expanded="false"
           data-menu-btn="true"
         >
-          <span class="relative h-[2px] w-5 rounded-full bg-white/85" aria-hidden="true">
-            <span class="absolute left-0 -top-2 h-[2px] w-5 rounded-full bg-white/75"></span>
-            <span class="absolute left-0 top-2 h-[2px] w-5 rounded-full bg-white/75"></span>
+          <span class="relative h-[2px] w-4 rounded-full bg-white/85 sm:w-5" aria-hidden="true">
+            <span class="absolute left-0 -top-[7px] h-[2px] w-4 rounded-full bg-white/75 sm:-top-2 sm:w-5"></span>
+            <span class="absolute left-0 top-[7px] h-[2px] w-4 rounded-full bg-white/75 sm:top-2 sm:w-5"></span>
           </span>
         </button>
         </div>
@@ -470,7 +523,7 @@
       <!-- Hero -->
       <section
         id="top"
-        class="relative scroll-mt-24 overflow-hidden pb-20 pt-16 md:min-h-[min(92vh,920px)] md:pb-28 md:pt-24"
+        class="relative scroll-mt-24 overflow-x-hidden pb-16 pt-12 sm:pb-20 sm:pt-16 md:min-h-[min(92vh,920px)] md:pb-28 md:pt-24"
         data-section-root="hero"
       >
         <canvas class="absolute inset-0 z-0 h-full w-full opacity-[0.65]" id="neural" aria-hidden="true"></canvas>
@@ -480,31 +533,37 @@
           aria-hidden="true"
         ></div>
 
-        <div class="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-16">
-          <div data-reveal class="reveal">
-            <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/[0.12] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-200/95 shadow-[0_0_24px_rgba(45,212,191,0.12)]">
-              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_14px_rgba(34,211,238,0.95)]" aria-hidden="true"></span>
-              <span data-i18n="hero.badge">Tech · AI · Safe systems · Digital growth</span>
+        <div
+          class="relative z-10 mx-auto grid w-full min-w-0 max-w-6xl grid-cols-1 items-center gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-2 lg:gap-16"
+        >
+          <div data-reveal class="reveal min-w-0">
+            <p
+              class="mb-4 flex w-full max-w-full flex-wrap items-center gap-x-2 gap-y-1.5 rounded-2xl border border-teal-400/30 bg-teal-500/[0.12] px-3 py-2 text-[9px] font-semibold uppercase leading-snug tracking-[0.12em] text-teal-200/95 shadow-[0_0_24px_rgba(45,212,191,0.12)] sm:mb-5 sm:inline-flex sm:w-auto sm:rounded-full sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]"
+            >
+              <span class="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_14px_rgba(34,211,238,0.95)]" aria-hidden="true"></span>
+              <span class="min-w-0 flex-1 sm:flex-initial" data-i18n="hero.badge">Tech · AI · Safe systems · Digital growth</span>
             </p>
-            <h1 class="font-display text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] md:text-6xl lg:text-[3.75rem] xl:text-[4.15rem]">
-              <span class="text-gradient-hero drop-shadow-[0_4px_48px_rgba(45,212,191,0.12)]" data-i18n="hero.title1">Empowering Businesses</span>
-              <span class="mt-2 block text-white/95 drop-shadow-[0_2px_32px_rgba(0,0,0,0.5)]" data-i18n="hero.title2">with Our Digital Services</span>
+            <h1
+              class="font-display text-[clamp(1.625rem,6vw,2.125rem)] font-extrabold leading-[1.15] tracking-tight text-balance sm:text-4xl sm:leading-[1.1] md:text-5xl md:tracking-[-0.02em] lg:text-6xl lg:leading-[1.05] xl:text-[3.75rem] 2xl:text-[4.15rem]"
+            >
+              <span class="text-gradient-hero block break-words drop-shadow-[0_4px_48px_rgba(45,212,191,0.12)]" data-i18n="hero.title1">Empowering Businesses</span>
+              <span class="mt-2 block break-words text-white/95 drop-shadow-[0_2px_32px_rgba(0,0,0,0.5)]" data-i18n="hero.title2">with Our Digital Services</span>
             </h1>
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-400 md:text-lg md:leading-relaxed" data-i18n="hero.intro">
+            <p class="mt-5 max-w-xl text-sm leading-relaxed text-slate-400 sm:mt-6 sm:text-base md:mt-6 md:text-lg md:leading-relaxed" data-i18n="hero.intro">
               We build apps, websites, and behind-the-scenes software; add AI where it helps; keep your systems safer online; and use cameras and
               images when your business needs them. We also help you move everyday work to modern digital tools — step by step.
             </p>
 
-            <div class="mt-10 flex flex-wrap items-center gap-3">
+            <div class="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center">
               <a
-                class="group inline-flex items-center justify-center rounded-full border border-teal-400/55 bg-gradient-to-r from-teal-400 to-cyan-500 px-7 py-3.5 font-semibold text-black shadow-glow transition duration-300 hover:border-teal-300 hover:shadow-[0_0_56px_rgba(45,212,191,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-400/35"
+                class="group inline-flex w-full min-w-0 items-center justify-center rounded-full border border-teal-400/55 bg-gradient-to-r from-teal-400 to-cyan-500 px-6 py-3.5 text-center text-sm font-semibold text-black shadow-glow transition duration-300 hover:border-teal-300 hover:shadow-[0_0_56px_rgba(45,212,191,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-400/35 sm:w-auto sm:px-7"
                 href="#contact"
                 data-btn="true"
                 data-i18n="hero.cta1"
                 >Get Started</a
               >
               <a
-                class="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-zas-panel/40 px-7 py-3.5 font-semibold text-white shadow-glass backdrop-blur-xl transition duration-300 hover:border-teal-400/45 hover:bg-teal-500/10 hover:shadow-[0_0_40px_rgba(45,212,191,0.12)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/15"
+                class="inline-flex w-full min-w-0 items-center justify-center rounded-full border border-white/[0.14] bg-zas-panel/40 px-6 py-3.5 text-center text-sm font-semibold text-white shadow-glass backdrop-blur-xl transition duration-300 hover:border-teal-400/45 hover:bg-teal-500/10 hover:shadow-[0_0_40px_rgba(45,212,191,0.12)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/15 sm:w-auto sm:px-7"
                 href="#services"
                 data-btn="true"
                 data-i18n="hero.cta2"
@@ -512,15 +571,29 @@
               >
             </div>
 
-            <div class="mt-12 flex flex-wrap gap-3 text-xs">
-              <span class="rounded-full border border-white/[0.08] bg-black/30 px-3 py-1.5 font-medium text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]" data-i18n="hero.chip1">Going digital</span>
-              <span class="rounded-full border border-white/[0.08] bg-black/30 px-3 py-1.5 font-medium text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]" data-i18n="hero.chip2">Safer online</span>
-              <span class="rounded-full border border-teal-400/25 bg-teal-500/10 px-3 py-1.5 font-medium text-teal-100/95 shadow-[0_0_20px_rgba(45,212,191,0.12)]" data-i18n="hero.chip3">Built for real use</span>
+            <div
+              class="mx-auto mt-10 flex max-w-md flex-col items-stretch gap-2.5 text-xs sm:mt-12 sm:mx-0 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:gap-3"
+            >
+              <span
+                class="rounded-full border border-white/[0.08] bg-black/30 px-4 py-2.5 text-center font-medium leading-snug text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:inline-flex sm:px-3 sm:py-1.5 sm:text-start"
+                data-i18n="hero.chip1"
+                >Going digital</span
+              >
+              <span
+                class="rounded-full border border-white/[0.08] bg-black/30 px-4 py-2.5 text-center font-medium leading-snug text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:inline-flex sm:px-3 sm:py-1.5 sm:text-start"
+                data-i18n="hero.chip2"
+                >Safer online</span
+              >
+              <span
+                class="rounded-full border border-teal-400/25 bg-teal-500/10 px-4 py-2.5 text-center font-medium leading-snug text-teal-100/95 shadow-[0_0_20px_rgba(45,212,191,0.12)] sm:inline-flex sm:px-3 sm:py-1.5 sm:text-start"
+                data-i18n="hero.chip3"
+                >Built for real use</span
+              >
             </div>
           </div>
 
           <!-- Laptop / glow mockup -->
-          <div class="relative mx-auto w-full max-w-lg reveal lg:mx-0 lg:max-w-none" data-reveal>
+          <div class="relative mx-auto w-full min-w-0 max-w-lg reveal lg:mx-0 lg:max-w-none" data-reveal>
             <div class="pointer-events-none absolute left-1/2 top-1/2 h-[min(120%,520px)] w-[min(120%,520px)] -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
               <svg class="absolute inset-0 h-full w-full animate-spin-slow text-teal-400/25" viewBox="0 0 400 400" fill="none" aria-hidden="true">
                 <circle cx="200" cy="200" r="178" stroke="currentColor" stroke-width="1" stroke-dasharray="14 20" opacity="0.7" />
@@ -540,58 +613,82 @@
             <div class="pointer-events-none absolute -left-8 bottom-2 h-64 w-64 rounded-full blur-[90px]" style="background: rgba(45, 212, 191, 0.2)" aria-hidden="true"></div>
             <div class="pointer-events-none absolute right-8 top-20 h-40 w-40 rounded-full blur-[70px]" style="background: rgba(15, 23, 42, 0.9)" aria-hidden="true"></div>
 
-            <div class="relative animate-float-slow rounded-[2rem] border border-white/[0.1] bg-gradient-to-br from-white/[0.09] to-zas-panel/30 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.65),0_0_0_1px_rgba(45,212,191,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
-              <div class="flex items-center gap-2 px-2 pb-3">
-                <span class="h-2.5 w-2.5 rounded-full bg-slate-600/90"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-slate-500/80"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-teal-600/70"></span>
-                <span class="ml-auto font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500" data-i18n="mockup.preview">Preview — your tools</span>
+            <div
+              class="relative isolate rounded-3xl border border-white/[0.1] bg-gradient-to-br from-white/[0.09] to-zas-panel/30 p-3 shadow-[0_40px_120px_rgba(0,0,0,0.65),0_0_0_1px_rgba(45,212,191,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl sm:rounded-[2rem] sm:p-4 md:animate-float-slow"
+            >
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-2 px-1 pb-2 sm:flex-nowrap sm:px-2 sm:pb-3">
+                <span class="flex shrink-0 items-center gap-1.5">
+                  <span class="h-2.5 w-2.5 rounded-full bg-slate-600/90"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-slate-500/80"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-teal-600/70"></span>
+                </span>
+                <span
+                  class="ms-auto min-w-0 max-w-[min(100%,14rem)] text-end font-mono text-[9px] uppercase leading-tight tracking-[0.12em] text-slate-500 sm:max-w-none sm:text-[10px] sm:tracking-[0.2em]"
+                  data-i18n="mockup.preview"
+                  >Preview — your tools</span
+                >
               </div>
-              <div class="relative overflow-hidden rounded-2xl border border-teal-400/25 bg-black/75 shadow-[inset_0_0_60px_rgba(45,212,191,0.06)]">
+              <div class="relative overflow-hidden rounded-xl border border-teal-400/25 bg-black/75 shadow-[inset_0_0_60px_rgba(45,212,191,0.06)] sm:rounded-2xl">
                 <div class="absolute inset-0 bg-gradient-to-br from-teal-600/25 via-cyan-500/10 to-transparent"></div>
                 <div class="absolute inset-0 opacity-40 mix-blend-screen">
                   <div class="absolute inset-x-0 top-0 h-1/2 animate-scan bg-gradient-to-b from-cyan-400/25 to-transparent"></div>
                 </div>
-                <div class="relative grid gap-4 p-6 md:p-8">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-teal-300/90" data-i18n="mockup.workspace">Your workspace</p>
-                      <p class="mt-2 font-display text-lg font-bold text-white" data-i18n="mockup.subtitle">Software that fits how you work</p>
+                <div class="relative grid gap-4 p-4 sm:gap-5 sm:p-6 md:gap-6 md:p-8">
+                  <div class="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                    <div class="min-w-0 flex-1">
+                      <p
+                        class="font-mono text-[9px] uppercase leading-relaxed tracking-[0.2em] text-teal-300/90 sm:text-[10px] sm:tracking-[0.28em]"
+                        data-i18n="mockup.workspace"
+                      >
+                        Your workspace
+                      </p>
+                      <p
+                        class="mt-1.5 font-display text-base font-bold leading-snug text-white sm:mt-2 sm:text-lg"
+                        data-i18n="mockup.subtitle"
+                      >
+                        Software that fits how you work
+                      </p>
                     </div>
-                    <div class="rounded-xl border border-teal-400/30 bg-teal-500/10 px-3 py-2 text-xs font-semibold text-teal-100" data-i18n="mockup.aiReady">
+                    <div
+                      class="shrink-0 self-start rounded-xl border border-teal-400/30 bg-teal-500/10 px-3 py-2 text-center text-[11px] font-semibold leading-tight text-teal-100 sm:self-auto sm:text-xs"
+                      data-i18n="mockup.aiReady"
+                    >
                       AI ready
                     </div>
                   </div>
-                  <div class="grid grid-cols-3 gap-3">
-                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:p-3">
                       <p class="text-[10px] text-slate-500" data-i18n="mockup.speed">Speed</p>
-                      <p class="mt-1 font-mono text-sm font-semibold text-cyan-300" data-i18n="mockup.fast">Fast</p>
+                      <p class="mt-1.5 font-mono text-sm font-semibold leading-tight text-cyan-300 sm:mt-1" data-i18n="mockup.fast">Fast</p>
                     </div>
-                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:p-3">
                       <p class="text-[10px] text-slate-500" data-i18n="mockup.online">Online</p>
-                      <p class="mt-1 font-mono text-sm font-semibold text-emerald-300" data-i18n="mockup.stable">Stable</p>
+                      <p class="mt-1.5 font-mono text-sm font-semibold leading-tight text-emerald-300 sm:mt-1" data-i18n="mockup.stable">Stable</p>
                     </div>
-                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:p-3">
                       <p class="text-[10px] text-slate-500" data-i18n="mockup.safety">Safety</p>
-                      <p class="mt-1 font-mono text-sm font-semibold text-teal-200" data-i18n="mockup.protected">Protected</p>
+                      <p class="mt-1.5 font-mono text-sm font-semibold leading-tight text-teal-200 sm:mt-1" data-i18n="mockup.protected">Protected</p>
                     </div>
                   </div>
                   <div class="h-px w-full bg-gradient-to-r from-transparent via-teal-400/40 to-transparent"></div>
-                  <div class="flex items-center justify-between gap-3">
-                    <div class="flex -space-x-2">
-                      <span class="h-8 w-8 rounded-full border border-teal-400/40 bg-gradient-to-br from-teal-400 to-cyan-600"></span>
-                      <span class="h-8 w-8 rounded-full border border-white/10 bg-slate-700/80"></span>
-                      <span class="h-8 w-8 rounded-full border border-white/10 bg-slate-800/80"></span>
+                  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <div class="flex flex-row items-center gap-2 ps-0.5" aria-hidden="true">
+                      <span class="h-8 w-8 shrink-0 rounded-full border border-teal-400/40 bg-gradient-to-br from-teal-400 to-cyan-600"></span>
+                      <span class="h-8 w-8 shrink-0 rounded-full border border-white/10 bg-slate-700/80"></span>
+                      <span class="h-8 w-8 shrink-0 rounded-full border border-white/10 bg-slate-800/80"></span>
                     </div>
-                    <span class="rounded-full border border-cyan-400/35 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold text-cyan-100" data-i18n="mockup.launch">
+                    <span
+                      class="inline-flex w-full items-center justify-center rounded-full border border-cyan-400/35 bg-cyan-500/10 px-4 py-2 text-center text-[11px] font-semibold leading-snug text-cyan-100 sm:w-auto sm:justify-start sm:px-3 sm:py-1"
+                      data-i18n="mockup.launch"
+                    >
                       Ready to launch
                     </span>
                   </div>
                 </div>
               </div>
-              <div class="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-black/40 px-4 py-3">
-                <span class="h-2 w-16 rounded-full bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700"></span>
-                <span class="h-2 flex-1 rounded-full bg-gradient-to-r from-teal-600/40 via-cyan-500/50 to-teal-600/40"></span>
+              <div class="mt-3 flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-black/40 px-3 py-2.5 sm:mt-4 sm:px-4 sm:py-3">
+                <span class="h-2 w-12 shrink-0 rounded-full bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700 sm:w-16"></span>
+                <span class="h-2 min-w-0 flex-1 rounded-full bg-gradient-to-r from-teal-600/40 via-cyan-500/50 to-teal-600/40"></span>
               </div>
             </div>
           </div>
@@ -600,7 +697,7 @@
 
       <!-- Metrics strip -->
       <section class="relative pb-6" data-i18n-aria="aria.highlights" aria-label="Highlights">
-        <div class="mx-auto w-full max-w-6xl px-6">
+        <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <div
             class="reveal zas-glass flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:justify-between"
             data-reveal
@@ -638,7 +735,7 @@
 
       <!-- Services -->
       <section id="services" class="scroll-mt-24 py-16 md:py-20">
-        <div class="mx-auto w-full max-w-6xl px-6">
+        <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <header class="reveal mb-10 max-w-3xl" data-reveal>
             <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="services.kicker">Services</p>
             <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="services.title">What we can do for you</h2>
@@ -749,7 +846,7 @@
 
       <!-- About -->
       <section id="about" class="scroll-mt-24 border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent py-16 md:py-20">
-        <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
+        <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
           <div class="reveal" data-reveal>
             <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="about.kicker">About us</p>
             <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="about.title">Practical tech, explained clearly</h2>
@@ -799,7 +896,7 @@
 
       <!-- Projects -->
       <section id="projects" class="scroll-mt-24 py-16 md:py-20">
-        <div class="mx-auto w-full max-w-6xl px-6">
+        <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <header class="reveal mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between" data-reveal>
             <div>
               <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="projects.kicker">Examples</p>
@@ -867,7 +964,7 @@
 
       <!-- Contact -->
       <section id="contact" class="scroll-mt-24 pb-20 pt-4">
-        <div class="mx-auto w-full max-w-6xl px-6">
+        <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <header class="reveal mb-10" data-reveal>
             <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="contact.kicker">Contact</p>
             <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="contact.title">Get in touch</h2>
@@ -993,7 +1090,7 @@
     </main>
 
     <footer class="border-t border-white/[0.06] bg-black/50 py-10 backdrop-blur-2xl">
-      <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-center md:justify-between">
         <div class="flex items-start gap-4">
           <span class="grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-white/10 bg-white/5">
             <img class="h-full w-full object-cover" src="./assets/logo.JPG" alt="" width="44" height="44" loading="lazy" decoding="async" onerror="this.style.display='none'" />
@@ -1010,7 +1107,7 @@
           <a class="rounded-full px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white" href="#contact" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
-      <div class="mx-auto mt-8 w-full max-w-6xl border-t border-white/10 px-6 pt-6 text-center text-[11px] text-slate-600 md:text-left">
+      <div class="mx-auto mt-8 w-full max-w-6xl border-t border-white/10 px-4 pt-6 text-center text-[11px] text-slate-600 sm:px-6 md:text-left">
         © <span id="y"></span> ZAS Tech. <span data-i18n="footer.rights">All rights reserved.</span>
       </div>
     </footer>
