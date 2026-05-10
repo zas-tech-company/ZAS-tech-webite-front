@@ -3,53 +3,33 @@
 
   // Developer easter egg (silent, but satisfying)
   // eslint-disable-next-line no-console
-  console.log("Welcome to ZAS Tech — Intelligence in Motion");
+  console.log("Welcome to ZAS Tech");
 
   function clamp(n, a, b) {
     return Math.max(a, Math.min(b, n));
   }
 
-  // Tailwind-only UI: avoid CSS-variable hover effects that required custom CSS.
-
-  function attachPerceptionHook() {
-    const target = document.getElementById("hookTyped");
-    if (!target) return;
-
-    const words = ["adapt.", "learn.", "evolve."];
-    let wIdx = 0;
-    let tIdx = 0;
-    let deleting = false;
+  function attachReveal() {
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (!els.length) return;
 
     if (reduceMotion) {
-      target.textContent = ` ${words.join(" ")}`;
+      for (const el of els) el.classList.add("reveal-in");
       return;
     }
 
-    const tick = () => {
-      const word = words[wIdx] ?? words[0];
-      const speed = deleting ? 36 : 54;
-
-      if (!deleting) {
-        tIdx = Math.min(word.length, tIdx + 1);
-        target.textContent = ` ${word.slice(0, tIdx)}`;
-        if (tIdx >= word.length) {
-          deleting = true;
-          window.setTimeout(tick, 820);
-          return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("reveal-in");
+          io.unobserve(entry.target);
         }
-      } else {
-        tIdx = Math.max(0, tIdx - 1);
-        target.textContent = ` ${word.slice(0, tIdx)}`;
-        if (tIdx <= 0) {
-          deleting = false;
-          wIdx = (wIdx + 1) % words.length;
-        }
-      }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+    );
 
-      window.setTimeout(tick, speed);
-    };
-
-    tick();
+    for (const el of els) io.observe(el);
   }
 
   function attachCountUp() {
@@ -111,8 +91,8 @@
 
     const palette = {
       point: "rgba(148,163,184,0.55)",
-      glowA: "rgba(37,99,235,0.28)",
-      glowB: "rgba(16,185,129,0.18)",
+      glowA: "rgba(45,212,191,0.26)",
+      glowB: "rgba(34,211,238,0.18)",
     };
 
     const hero = canvas.closest('[data-section-root="hero"]') || canvas.closest("section");
@@ -241,7 +221,7 @@
           const d = Math.hypot(dx, dy);
           if (d > linkDist) continue;
           const t = 1 - d / linkDist;
-          ctx.strokeStyle = `rgba(37,99,235,${0.04 + t * 0.26})`;
+          ctx.strokeStyle = `rgba(45,212,191,${0.04 + t * 0.26})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
@@ -261,7 +241,7 @@
       if (cursor.active) {
         ctx.beginPath();
         ctx.arc(cursor.x, cursor.y, 2.1, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(37,99,235,0.75)";
+        ctx.fillStyle = "rgba(34,211,238,0.75)";
         ctx.fill();
       }
     }
@@ -282,7 +262,29 @@
     });
   }
 
-  attachPerceptionHook();
+  function attachHeroSpotlight() {
+    const hero = document.querySelector('[data-section-root="hero"]');
+    if (!(hero instanceof HTMLElement)) return;
+    if (reduceMotion) return;
+
+    /** @param {PointerEvent} e */
+    const move = (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / Math.max(r.width, 1)) * 100;
+      const y = ((e.clientY - r.top) / Math.max(r.height, 1)) * 100;
+      hero.style.setProperty("--spot-x", `${x}%`);
+      hero.style.setProperty("--spot-y", `${y}%`);
+    };
+
+    hero.addEventListener("pointermove", move, { passive: true });
+    hero.addEventListener("pointerleave", () => {
+      hero.style.removeProperty("--spot-x");
+      hero.style.removeProperty("--spot-y");
+    });
+  }
+
+  attachReveal();
+  attachHeroSpotlight();
   attachCountUp();
   attachNeuralCanvas();
 
@@ -296,19 +298,24 @@
       .map((t) => document.getElementById(t.getAttribute("data-section") || ""))
       .filter((s) => s instanceof HTMLElement);
 
-    const activeOn = (el) => {
-      el.classList.add("border", "border-primary/30", "bg-primary/10");
-      el.classList.remove("border-transparent");
-    };
-    const activeOff = (el) => {
-      el.classList.remove("border", "border-primary/30", "bg-primary/10");
-      el.classList.add("border-transparent");
-    };
+    const passiveStandard =
+      "rounded-full border border-transparent px-3.5 py-2 text-xs font-semibold text-white/75 transition duration-300 ease-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]";
+    const activeStandard =
+      "rounded-full border border-teal-400/45 bg-teal-500/15 px-3.5 py-2 text-xs font-semibold text-white shadow-glow-nav transition duration-300 ease-out hover:bg-teal-500/25";
+    const passiveContact =
+      "rounded-full border border-cyan-400/35 bg-cyan-500/12 px-3.5 py-2 text-xs font-semibold text-white transition duration-300 ease-out hover:border-cyan-400/55 hover:bg-cyan-500/18 hover:shadow-[0_0_28px_rgba(34,211,238,0.2)]";
+    const activeContact =
+      "rounded-full border border-cyan-400/55 bg-cyan-500/22 px-3.5 py-2 text-xs font-semibold text-white shadow-[0_0_28px_rgba(34,211,238,0.28)] transition duration-300 ease-out hover:bg-cyan-500/28";
 
     const setActive = (id) => {
-      for (const t of tabs) activeOff(t);
-      const el = byId.get(id);
-      if (el) activeOn(el);
+      for (const t of tabs) {
+        const sid = t.getAttribute("data-section") || "";
+        if (sid === id) {
+          t.className = sid === "contact" ? activeContact : activeStandard;
+        } else {
+          t.className = sid === "contact" ? passiveContact : passiveStandard;
+        }
+      }
     };
 
     const io = new IntersectionObserver(
@@ -324,14 +331,13 @@
 
     for (const s of sections) io.observe(s);
 
-    window.addEventListener(
-      "hashchange",
-      () => {
-        const id = (location.hash || "").replace("#", "");
-        if (id) setActive(id);
-      },
-      { passive: true },
-    );
+    const applyHash = () => {
+      const id = (location.hash || "").replace("#", "");
+      if (id && byId.has(id)) setActive(id);
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash, { passive: true });
+    window.addEventListener("zas:languagechange", applyHash, { passive: true });
   })();
 
   // Mobile menu toggle
@@ -389,6 +395,21 @@
 
     // start closed with correct transform state
     if (panel instanceof HTMLElement) panel.classList.add("translate-x-full");
+  })();
+
+  // Live Server / simple static hosts reject POST to .html (HTTP 405). Netlify handles POST in production.
+  (() => {
+    const form = document.querySelector('form[name="contact"]');
+    if (!(form instanceof HTMLFormElement)) return;
+    const host = window.location.hostname;
+    const isLocal = host === "localhost" || host === "127.0.0.1" || host === "";
+    if (!isLocal) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let dest = (form.getAttribute("action") || "thank-you.html").trim();
+      if (dest.startsWith("/")) dest = dest.slice(1) || "thank-you.html";
+      window.location.href = dest;
+    });
   })();
 })();
 

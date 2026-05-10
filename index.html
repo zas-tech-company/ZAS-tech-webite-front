@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#081120" />
+    <meta name="theme-color" content="#030712" />
     <meta
       name="description"
-      content="ZAS Tech — Web, mobile, and AI solutions designed with clarity, speed, and purpose."
+      content="ZAS Tech helps businesses with software, websites and apps, AI, online safety, smart camera solutions, and moving work online."
     />
-    <title>ZAS Tech — Intelligence in Motion</title>
+    <title>ZAS Tech — Empowering Businesses with Digital Services</title>
 
-    <meta property="og:title" content="ZAS Tech — Intelligence in Motion" />
+    <meta property="og:title" content="ZAS Tech — Digital Services &amp; Innovation" />
     <meta
       property="og:description"
-      content="Web, mobile, and AI solutions designed with clarity, speed, and purpose."
+      content="Software, websites and apps, AI, cybersecurity, camera-based solutions, and helping your business go digital."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./assets/logo.JPG" />
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,169 +33,430 @@
         theme: {
           extend: {
             colors: {
-              bg: "#081120",
-              surface: "#0F172A",
-              primary: "#2563EB",
-              secondary: "#10B981",
-              muted: "#94A3B8",
-              text: "#F8FAFC",
+              zas: {
+                black: "#000000",
+                night: "#030712",
+                deep: "#042f2e",
+                panel: "#0f172a",
+                muted: "#94a3b8",
+                text: "#f8fafc",
+              },
             },
             fontFamily: {
               sans: ["Inter", "system-ui", "Segoe UI", "Roboto", "Arial", "sans-serif"],
-              sora: ["Sora", "Inter", "system-ui", "sans-serif"],
+              display: ["Syne", "Inter", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 0 80px rgba(45, 212, 191, 0.22), 0 25px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255,255,255,0.06)",
+              "glow-sm": "0 0 32px rgba(34, 211, 238, 0.18)",
+              "glow-nav": "0 0 28px rgba(45, 212, 191, 0.35)",
+              glass: "0 8px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.07)",
+            },
+            backgroundImage: {
+              "grid-fade":
+                "linear-gradient(to right, rgba(148,163,184,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,0.06) 1px, transparent 1px)",
+              "hero-fade":
+                "radial-gradient(ellipse 90% 65% at 50% -15%, rgba(4, 47, 46, 0.55) 0%, transparent 52%), radial-gradient(ellipse 70% 50% at 100% 20%, rgba(45, 212, 191, 0.12) 0%, transparent 45%), radial-gradient(ellipse 55% 45% at 0% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%)",
             },
           },
         },
       };
     </script>
+    <style>
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-12px) rotate(1deg);
+        }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          opacity: 0.45;
+          filter: blur(48px);
+        }
+        50% {
+          opacity: 0.75;
+          filter: blur(56px);
+        }
+      }
+      @keyframes scan {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+      .animate-float-slow {
+        animation: float-slow 9s ease-in-out infinite;
+      }
+      .animate-pulse-glow {
+        animation: pulse-glow 7s ease-in-out infinite;
+      }
+      .animate-scan {
+        animation: scan 5s linear infinite;
+      }
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes ring-pulse {
+        0%,
+        100% {
+          opacity: 0.35;
+        }
+        50% {
+          opacity: 0.65;
+        }
+      }
+      @keyframes float-orbit {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(6px, -10px) scale(1.02);
+        }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 140s linear infinite;
+      }
+      .animate-spin-reverse {
+        animation: spin-slow 95s linear infinite reverse;
+      }
+      .animate-ring-pulse {
+        animation: ring-pulse 6s ease-in-out infinite;
+      }
+      .animate-float-orbit {
+        animation: float-orbit 14s ease-in-out infinite;
+      }
+      .zas-glass {
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(15, 23, 42, 0.42);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        box-shadow:
+          0 12px 48px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 0 0 1px rgba(45, 212, 191, 0.04);
+      }
+      .zas-glass-hover {
+        transition:
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.4s ease,
+          box-shadow 0.5s ease;
+      }
+      .zas-glass-hover:hover {
+        border-color: rgba(45, 212, 191, 0.38);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.55),
+          0 0 48px rgba(45, 212, 191, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: translateY(-6px);
+      }
+      [data-section-root="hero"] {
+        --spot-x: 50%;
+        --spot-y: 42%;
+      }
+      .hero-spotlight {
+        background: radial-gradient(
+          680px circle at var(--spot-x, 50%) var(--spot-y, 42%),
+          rgba(45, 212, 191, 0.11),
+          rgba(34, 211, 238, 0.04) 38%,
+          transparent 58%
+        );
+      }
+      .text-gradient-hero {
+        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #99f6e4 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.reveal-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .animate-float-slow,
+        .animate-pulse-glow,
+        .animate-scan,
+        .animate-spin-slow,
+        .animate-spin-reverse,
+        .animate-ring-pulse,
+        .animate-float-orbit {
+          animation: none !important;
+        }
+        .zas-glass-hover:hover {
+          transform: none;
+        }
+      }
+      body.zas-rtl {
+        font-family: "Noto Sans Arabic", Inter, system-ui, sans-serif;
+      }
+      body.zas-rtl .font-display {
+        font-family: "Noto Sans Arabic", "Syne", Inter, system-ui, sans-serif;
+      }
+      body.zas-rtl .font-mono {
+        font-family: ui-monospace, "Cascadia Mono", monospace;
+      }
+    </style>
   </head>
 
-  <body class="bg-bg text-text font-sans overflow-x-hidden">
+  <body class="bg-black bg-hero-fade text-zas-text font-sans antialiased overflow-x-hidden">
     <a
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-full focus:border focus:border-white/10 focus:bg-surface focus:px-4 focus:py-2"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-full focus:border focus:border-teal-400/30 focus:bg-zas-panel/90 focus:px-4 focus:py-2 focus:backdrop-blur-xl"
       href="#main"
+      data-i18n="skip"
       >Skip to content</a
     >
 
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-bg/95 backdrop-blur-xl">
-      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3">
-        <a class="flex items-center gap-3 select-none" href="#top" aria-label="ZAS Tech home">
-          <img
-            class="h-11 w-11 rounded-xl border border-white/10 bg-surface/60 object-cover shadow-[0_0_0_6px_rgba(37,99,235,.10),0_18px_55px_rgba(0,0,0,.35)]"
-            src="./assets/logo.JPG"
-            alt="ZAS Tech"
-            width="44"
-            height="44"
-            decoding="async"
-          />
-          <span class="font-sora text-sm font-extrabold tracking-[.02em]">ZAS Tech</span>
+    <!-- Ambient background -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-zas-night">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div
+        class="absolute -left-[22%] top-[-12%] h-[560px] w-[560px] rounded-full bg-[#042f2e]/90 blur-[130px] animate-pulse-glow"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute right-[-18%] top-[18%] h-[520px] w-[520px] rounded-full blur-[120px] animate-pulse-glow"
+        style="animation-delay: 1.4s; background: rgba(34, 211, 238, 0.14)"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute bottom-[-25%] left-[25%] h-[620px] w-[620px] rounded-full blur-[140px]"
+        style="background: rgba(45, 212, 191, 0.09)"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute left-1/2 top-[60%] h-[320px] w-[90%] -translate-x-1/2 rounded-full blur-[100px]"
+        style="background: rgba(15, 23, 42, 0.85)"
+        aria-hidden="true"
+      ></div>
+      <div class="absolute inset-0 bg-[size:56px_56px] bg-grid-fade opacity-[0.28]" aria-hidden="true"></div>
+      <svg class="absolute left-[-8%] top-[12%] h-[min(55vh,520px)] w-[min(55vw,520px)] opacity-[0.22]" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <ellipse cx="200" cy="200" rx="160" ry="95" stroke="url(#ringGrad)" stroke-width="1.2" transform="rotate(-18 200 200)" class="animate-ring-pulse" />
+        <ellipse cx="200" cy="200" rx="125" ry="72" stroke="url(#ringGrad)" stroke-width="1" transform="rotate(12 200 200)" opacity="0.7" />
+        <defs>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="400" y2="400">
+            <stop stop-color="#2dd4bf" stop-opacity="0.9" />
+            <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.5" />
+            <stop offset="1" stop-color="#042f2e" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <svg class="absolute bottom-0 right-0 w-[min(92vw,760px)] opacity-[0.14]" viewBox="0 0 600 400" fill="none" aria-hidden="true">
+        <path d="M40 320C140 220 220 180 320 200C420 220 500 120 580 40" stroke="url(#g1)" stroke-width="2" />
+        <path d="M0 260C120 200 200 240 280 300C360 360 460 320 600 200" stroke="url(#g1)" stroke-width="1.5" opacity="0.55" />
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="600" y2="400">
+            <stop stop-color="#2dd4bf" />
+            <stop offset="1" stop-color="#0891b2" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <header
+      class="sticky top-0 z-50 border-b border-white/[0.06] bg-black/35 backdrop-blur-2xl shadow-[0_12px_48px_rgba(0,0,0,0.35)] supports-[backdrop-filter]:bg-black/25"
+    >
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3.5">
+        <a class="group flex items-center gap-3 select-none" href="#top" data-i18n-aria="aria.logo">
+          <span
+            class="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-teal-400/30 bg-zas-panel/60 shadow-[0_0_24px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50 group-hover:shadow-[0_0_36px_rgba(45,212,191,0.28)]"
+          >
+            <img
+              class="h-full w-full object-cover"
+              src="./assets/logo.JPG"
+              alt=""
+              width="44"
+              height="44"
+              decoding="async"
+              onerror="this.style.display='none'"
+            />
+            <span class="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-400/10 to-cyan-500/5" aria-hidden="true"></span>
+          </span>
+          <span class="font-display text-sm font-extrabold tracking-[0.12em] text-white">ZAS Tech</span>
         </a>
 
-        <button
-          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-surface/20 hover:bg-surface/30 hover:border-primary/30 transition md:hidden"
-          type="button"
-          aria-label="Open menu"
-          aria-controls="mobileMenu"
-          aria-expanded="false"
-          data-menu-btn="true"
+        <div class="flex flex-1 items-center justify-end gap-2 sm:gap-3">
+        <div
+          class="flex shrink-0 items-center rounded-full border border-white/[0.08] bg-zas-panel/40 p-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+          role="group"
+          data-i18n-aria="lang.label"
+          aria-label="Language"
         >
-          <span class="h-[2px] w-5 rounded-full bg-white/80 relative" aria-hidden="true">
-            <span class="absolute left-0 -top-2 h-[2px] w-5 rounded-full bg-white/70"></span>
-            <span class="absolute left-0 top-2 h-[2px] w-5 rounded-full bg-white/70"></span>
-          </span>
-        </button>
+          <button
+            type="button"
+            data-lang-btn="en"
+            data-i18n="lang.en"
+            class="rounded-full border border-transparent px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide transition duration-300 hover:bg-white/10 md:px-3"
+          >
+            English
+          </button>
+          <button
+            type="button"
+            data-lang-btn="ku"
+            data-i18n="lang.ku"
+            class="rounded-full border border-transparent px-2 py-1.5 text-[11px] font-semibold transition duration-300 hover:bg-white/10 md:px-2.5"
+          >
+            Kurdish
+          </button>
+          <button
+            type="button"
+            data-lang-btn="ar"
+            data-i18n="lang.ar"
+            class="rounded-full border border-transparent px-2.5 py-1.5 text-[11px] font-semibold transition duration-300 hover:bg-white/10 md:px-3"
+          >
+            Arabic
+          </button>
+        </div>
 
-        <nav class="hidden md:block" aria-label="Primary">
-          <div class="flex items-center gap-1 rounded-full border border-white/10 bg-surface/35 p-1 backdrop-blur-xl">
+        <nav class="hidden md:block" data-i18n-aria="aria.primaryNav" aria-label="Primary">
+          <div
+            class="flex items-center gap-0.5 rounded-full border border-white/[0.08] bg-zas-panel/35 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+          >
             <a
-              class="rounded-full border border-primary/30 bg-primary/10 px-3 py-2 text-xs font-semibold text-white/90 hover:bg-bg/30 hover:border-white/10 transition"
+              class="rounded-full border border-teal-400/45 bg-teal-500/15 px-3.5 py-2 text-xs font-semibold text-white shadow-glow-nav transition duration-300 ease-out hover:bg-teal-500/25"
               href="#top"
               data-tab="true"
               data-section="top"
+              data-i18n="nav.home"
               >Home</a
             >
             <a
-              class="rounded-full border border-transparent px-3 py-2 text-xs font-semibold text-white/90 hover:bg-bg/30 hover:border-white/10 transition"
+              class="rounded-full border border-transparent px-3.5 py-2 text-xs font-semibold text-white/75 transition duration-300 ease-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
               href="#services"
               data-tab="true"
               data-section="services"
+              data-i18n="nav.services"
               >Services</a
             >
             <a
-              class="rounded-full border border-transparent px-3 py-2 text-xs font-semibold text-white/90 hover:bg-bg/30 hover:border-white/10 transition"
-              href="#process"
+              class="rounded-full border border-transparent px-3.5 py-2 text-xs font-semibold text-white/75 transition duration-300 ease-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
+              href="#about"
               data-tab="true"
-              data-section="process"
-              >Process</a
+              data-section="about"
+              data-i18n="nav.about"
+              >About</a
             >
             <a
-              class="rounded-full border border-transparent px-3 py-2 text-xs font-semibold text-white/90 hover:bg-bg/30 hover:border-white/10 transition"
-              href="#why"
+              class="rounded-full border border-transparent px-3.5 py-2 text-xs font-semibold text-white/75 transition duration-300 ease-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.04)]"
+              href="#projects"
               data-tab="true"
-              data-section="why"
-              >Why</a
+              data-section="projects"
+              data-i18n="nav.projects"
+              >Projects</a
             >
             <a
-              class="rounded-full border border-transparent px-3 py-2 text-xs font-semibold text-white/90 hover:bg-bg/30 hover:border-white/10 transition"
-              href="#faq"
-              data-tab="true"
-              data-section="faq"
-              >FAQ</a
-            >
-            <a
-              class="rounded-full border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs font-semibold text-white/90 hover:bg-secondary/15 transition"
+              class="rounded-full border border-cyan-400/35 bg-cyan-500/12 px-3.5 py-2 text-xs font-semibold text-white transition duration-300 ease-out hover:border-cyan-400/55 hover:bg-cyan-500/18 hover:shadow-[0_0_28px_rgba(34,211,238,0.2)]"
               href="#contact"
               data-tab="true"
               data-section="contact"
+              data-i18n="nav.contact"
               >Contact</a
             >
           </div>
         </nav>
+
+        <button
+          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] shadow-glass transition duration-300 hover:border-teal-400/40 hover:bg-teal-500/10 hover:shadow-[0_0_28px_rgba(45,212,191,0.15)] md:hidden"
+          type="button"
+          data-i18n-aria="aria.menuOpen"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          data-menu-btn="true"
+        >
+          <span class="relative h-[2px] w-5 rounded-full bg-white/85" aria-hidden="true">
+            <span class="absolute left-0 -top-2 h-[2px] w-5 rounded-full bg-white/75"></span>
+            <span class="absolute left-0 top-2 h-[2px] w-5 rounded-full bg-white/75"></span>
+          </span>
+        </button>
+        </div>
       </div>
     </header>
 
-    <!-- Fixed overlay must sit outside <header>: backdrop-blur on the header can break fixed positioning / stacking. -->
     <div class="fixed inset-0 z-[200] hidden" id="mobileMenu" aria-hidden="true">
       <div class="absolute inset-0 bg-black/75 backdrop-blur-md" data-menu-close="true"></div>
       <div
-        class="absolute right-0 top-0 h-full w-[88%] max-w-sm translate-x-full overflow-hidden border-l border-white/10 bg-surface/95 p-5 shadow-[0_30px_120px_rgba(0,0,0,.70)] backdrop-blur-xl transition-transform duration-200 ease-out"
+        class="absolute right-0 top-0 h-full w-[88%] max-w-sm translate-x-full overflow-hidden border-l border-white/[0.08] bg-zas-panel/98 p-5 shadow-[0_30px_120px_rgba(0,0,0,.85)] backdrop-blur-2xl transition-transform duration-200 ease-out"
         data-menu-panel="true"
         role="dialog"
         aria-modal="true"
+        data-i18n-aria="aria.menuDialog"
         aria-label="Menu"
       >
         <div class="mb-4 flex items-center justify-between gap-3 border-b border-white/10 pb-3">
-          <div class="font-sora text-sm font-bold tracking-tight">Navigation</div>
+          <div class="font-display text-sm font-bold tracking-tight text-white" data-i18n="mobile.title">Navigate</div>
           <button
             class="rounded-full border border-white/20 bg-transparent px-3 py-2 text-xs font-semibold text-white/95 hover:bg-white/10 transition"
             type="button"
             data-menu-close="true"
+            data-i18n-aria="aria.menuClose"
             aria-label="Close menu"
           >
-            Close
+            <span data-i18n="mobile.close">Close</span>
           </button>
         </div>
         <div class="flex flex-col gap-2" role="list">
           <a
-            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            class="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 font-bold text-white/95 hover:border-teal-400/35 hover:bg-teal-500/10 transition"
             role="listitem"
             href="#top"
             data-menu-link="true"
+            data-i18n="nav.home"
             >Home</a
           >
           <a
-            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            class="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 font-bold text-white/95 hover:border-teal-400/35 hover:bg-teal-500/10 transition"
             role="listitem"
             href="#services"
             data-menu-link="true"
+            data-i18n="nav.services"
             >Services</a
           >
           <a
-            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            class="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 font-bold text-white/95 hover:border-teal-400/35 hover:bg-teal-500/10 transition"
             role="listitem"
-            href="#process"
+            href="#about"
             data-menu-link="true"
-            >Process</a
+            data-i18n="nav.about"
+            >About</a
           >
           <a
-            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
+            class="rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 font-bold text-white/95 hover:border-teal-400/35 hover:bg-teal-500/10 transition"
             role="listitem"
-            href="#why"
+            href="#projects"
             data-menu-link="true"
-            >Why</a
+            data-i18n="nav.projects"
+            >Projects</a
           >
           <a
-            class="rounded-2xl border border-white/12 bg-bg/55 px-4 py-3 font-bold text-white/95 hover:border-primary/35 hover:bg-bg/70 transition"
-            role="listitem"
-            href="#faq"
-            data-menu-link="true"
-            >FAQ</a
-          >
-          <a
-            class="rounded-2xl border border-secondary/35 bg-secondary/12 px-4 py-3 font-bold text-white/95 hover:bg-secondary/20 transition"
+            class="rounded-2xl border border-cyan-400/35 bg-cyan-500/12 px-4 py-3 font-bold text-white/95 hover:bg-cyan-500/18 transition"
             role="listitem"
             href="#contact"
             data-menu-link="true"
+            data-i18n="nav.contact"
             >Contact</a
           >
         </div>
@@ -203,427 +464,517 @@
     </div>
 
     <main id="main">
-      <section id="top" class="relative scroll-mt-24 overflow-hidden py-16 md:py-20" data-section-root="hero">
-        <canvas class="absolute inset-0 h-full w-full opacity-70" id="neural" aria-hidden="true"></canvas>
+      <!-- Hero -->
+      <section
+        id="top"
+        class="relative scroll-mt-24 overflow-hidden pb-20 pt-16 md:min-h-[min(92vh,920px)] md:pb-28 md:pt-24"
+        data-section-root="hero"
+      >
+        <canvas class="absolute inset-0 z-0 h-full w-full opacity-[0.65]" id="neural" aria-hidden="true"></canvas>
+        <div class="hero-spotlight pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" data-hero-spotlight></div>
         <div
-          class="pointer-events-none absolute -left-1/4 -right-1/4 bottom-0 h-[420px] blur-xl"
+          class="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/50 via-transparent to-zas-night"
           aria-hidden="true"
-          style="
-            background: radial-gradient(closest-side at 50% 30%, rgba(37, 99, 235, 0.28), transparent 70%),
-              radial-gradient(closest-side at 30% 60%, rgba(16, 185, 129, 0.16), transparent 70%);
-          "
         ></div>
 
-        <div class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-2">
-          <div>
-            <p class="mb-3 text-xs uppercase tracking-[.22em] text-muted">ZAS Tech — Intelligence in Motion</p>
-            <h1 class="font-sora text-4xl font-extrabold tracking-tight md:text-6xl">
-              Building Smart Digital Experiences
+        <div class="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-16">
+          <div data-reveal class="reveal">
+            <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/[0.12] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-teal-200/95 shadow-[0_0_24px_rgba(45,212,191,0.12)]">
+              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_14px_rgba(34,211,238,0.95)]" aria-hidden="true"></span>
+              <span data-i18n="hero.badge">Tech · AI · Safe systems · Digital growth</span>
+            </p>
+            <h1 class="font-display text-5xl font-extrabold leading-[1.05] tracking-[-0.02em] md:text-6xl lg:text-[3.75rem] xl:text-[4.15rem]">
+              <span class="text-gradient-hero drop-shadow-[0_4px_48px_rgba(45,212,191,0.12)]" data-i18n="hero.title1">Empowering Businesses</span>
+              <span class="mt-2 block text-white/95 drop-shadow-[0_2px_32px_rgba(0,0,0,0.5)]" data-i18n="hero.title2">with Our Digital Services</span>
             </h1>
-            <p class="mt-3 flex items-center gap-2 font-semibold text-white/90" aria-live="polite">
-              <span class="text-primary">→</span>
-              <span class="text-muted">Systems that</span>
-              <span id="hookTyped"> adapt.</span>
-            </p>
-            <p class="mt-4 max-w-xl text-base text-muted md:text-lg">
-              Web, mobile, and AI solutions designed with clarity, speed, and purpose.
-            </p>
-            <p class="mt-3 max-w-xl text-sm text-white/80">
-              Built for <span class="text-white/90 font-semibold">startups</span> and teams shipping modern products — with
-              <span class="text-white/90 font-semibold">speed</span> and <span class="text-white/90 font-semibold">clarity</span>.
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-400 md:text-lg md:leading-relaxed" data-i18n="hero.intro">
+              We build apps, websites, and behind-the-scenes software; add AI where it helps; keep your systems safer online; and use cameras and
+              images when your business needs them. We also help you move everyday work to modern digital tools — step by step.
             </p>
 
-            <div class="mt-6 flex flex-wrap items-center gap-3">
+            <div class="mt-10 flex flex-wrap items-center gap-3">
               <a
-                class="inline-flex items-center justify-center rounded-full border border-primary/60 bg-primary/90 px-4 py-3 font-semibold shadow-[0_18px_55px_rgba(37,99,235,.26)] hover:bg-primary transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
-                href="#services"
-                data-btn="true"
-                >Our Services</a
-              >
-              <a
-                class="inline-flex items-center justify-center rounded-full border border-white/10 bg-surface/20 px-4 py-3 font-semibold hover:bg-surface/30 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/10"
+                class="group inline-flex items-center justify-center rounded-full border border-teal-400/55 bg-gradient-to-r from-teal-400 to-cyan-500 px-7 py-3.5 font-semibold text-black shadow-glow transition duration-300 hover:border-teal-300 hover:shadow-[0_0_56px_rgba(45,212,191,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-400/35"
                 href="#contact"
                 data-btn="true"
-                >Start a Project</a
+                data-i18n="hero.cta1"
+                >Get Started</a
               >
-            </div>
-
-            <div class="mt-8 flex items-center gap-3 text-xs text-muted">
-              <span class="font-mono tracking-[.18em]">SCROLL</span>
               <a
-                class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-surface/20 hover:bg-surface/30 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/10"
+                class="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-zas-panel/40 px-7 py-3.5 font-semibold text-white shadow-glass backdrop-blur-xl transition duration-300 hover:border-teal-400/45 hover:bg-teal-500/10 hover:shadow-[0_0_40px_rgba(45,212,191,0.12)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/15"
                 href="#services"
-                aria-label="Scroll to services"
+                data-btn="true"
+                data-i18n="hero.cta2"
+                >Explore Services</a
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 5v12" stroke="rgba(248,250,252,.85)" stroke-width="2" stroke-linecap="round" />
-                  <path d="M7 14l5 5 5-5" stroke="rgba(248,250,252,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
             </div>
 
-            <div class="mt-6 rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-full border border-white/10 bg-bg/30 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Modern architecture</span
-                >
-                <span class="rounded-full border border-white/10 bg-bg/30 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Scalable systems</span
-                >
-                <span class="rounded-full border border-white/10 bg-bg/30 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Clean UX</span
-                >
-              </div>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span
-                  class="rounded-full border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Custom-built</span
-                >
-                <span
-                  class="rounded-full border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Fast cycle</span
-                >
-                <span
-                  class="rounded-full border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs font-semibold text-white/85"
-                  >Precision delivery</span
-                >
-              </div>
+            <div class="mt-12 flex flex-wrap gap-3 text-xs">
+              <span class="rounded-full border border-white/[0.08] bg-black/30 px-3 py-1.5 font-medium text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]" data-i18n="hero.chip1">Going digital</span>
+              <span class="rounded-full border border-white/[0.08] bg-black/30 px-3 py-1.5 font-medium text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]" data-i18n="hero.chip2">Safer online</span>
+              <span class="rounded-full border border-teal-400/25 bg-teal-500/10 px-3 py-1.5 font-medium text-teal-100/95 shadow-[0_0_20px_rgba(45,212,191,0.12)]" data-i18n="hero.chip3">Built for real use</span>
             </div>
           </div>
 
-          <aside class="overflow-hidden rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl">
-            <div class="mb-4 flex items-center justify-between">
-              <div class="font-sora font-semibold">System Status</div>
-              <div class="rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-xs font-bold">LIVE</div>
+          <!-- Laptop / glow mockup -->
+          <div class="relative mx-auto w-full max-w-lg reveal lg:mx-0 lg:max-w-none" data-reveal>
+            <div class="pointer-events-none absolute left-1/2 top-1/2 h-[min(120%,520px)] w-[min(120%,520px)] -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
+              <svg class="absolute inset-0 h-full w-full animate-spin-slow text-teal-400/25" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <circle cx="200" cy="200" r="178" stroke="currentColor" stroke-width="1" stroke-dasharray="14 20" opacity="0.7" />
+                <circle cx="200" cy="200" r="155" stroke="url(#orbitC)" stroke-width="1.2" opacity="0.55" />
+                <defs>
+                  <linearGradient id="orbitC" x1="0" y1="0" x2="400" y2="400">
+                    <stop stop-color="#2dd4bf" />
+                    <stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <svg class="absolute inset-[8%] h-[84%] w-[84%] animate-spin-reverse text-cyan-400/20" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <ellipse cx="200" cy="200" rx="175" ry="105" stroke="currentColor" stroke-width="0.9" transform="rotate(24 200 200)" />
+              </svg>
             </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3">
-                <div class="text-xs text-muted">Clarity</div>
-                <div class="font-bold">High</div>
+            <div class="pointer-events-none absolute -right-4 top-6 h-72 w-72 rounded-full blur-[100px]" style="background: rgba(34, 211, 238, 0.22)" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute -left-8 bottom-2 h-64 w-64 rounded-full blur-[90px]" style="background: rgba(45, 212, 191, 0.2)" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute right-8 top-20 h-40 w-40 rounded-full blur-[70px]" style="background: rgba(15, 23, 42, 0.9)" aria-hidden="true"></div>
+
+            <div class="relative animate-float-slow rounded-[2rem] border border-white/[0.1] bg-gradient-to-br from-white/[0.09] to-zas-panel/30 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.65),0_0_0_1px_rgba(45,212,191,0.06),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+              <div class="flex items-center gap-2 px-2 pb-3">
+                <span class="h-2.5 w-2.5 rounded-full bg-slate-600/90"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-slate-500/80"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-teal-600/70"></span>
+                <span class="ml-auto font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500" data-i18n="mockup.preview">Preview — your tools</span>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3">
-                <div class="text-xs text-muted">Speed</div>
-                <div class="font-bold">Fast</div>
+              <div class="relative overflow-hidden rounded-2xl border border-teal-400/25 bg-black/75 shadow-[inset_0_0_60px_rgba(45,212,191,0.06)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-teal-600/25 via-cyan-500/10 to-transparent"></div>
+                <div class="absolute inset-0 opacity-40 mix-blend-screen">
+                  <div class="absolute inset-x-0 top-0 h-1/2 animate-scan bg-gradient-to-b from-cyan-400/25 to-transparent"></div>
+                </div>
+                <div class="relative grid gap-4 p-6 md:p-8">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-teal-300/90" data-i18n="mockup.workspace">Your workspace</p>
+                      <p class="mt-2 font-display text-lg font-bold text-white" data-i18n="mockup.subtitle">Software that fits how you work</p>
+                    </div>
+                    <div class="rounded-xl border border-teal-400/30 bg-teal-500/10 px-3 py-2 text-xs font-semibold text-teal-100" data-i18n="mockup.aiReady">
+                      AI ready
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                      <p class="text-[10px] text-slate-500" data-i18n="mockup.speed">Speed</p>
+                      <p class="mt-1 font-mono text-sm font-semibold text-cyan-300" data-i18n="mockup.fast">Fast</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                      <p class="text-[10px] text-slate-500" data-i18n="mockup.online">Online</p>
+                      <p class="mt-1 font-mono text-sm font-semibold text-emerald-300" data-i18n="mockup.stable">Stable</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                      <p class="text-[10px] text-slate-500" data-i18n="mockup.safety">Safety</p>
+                      <p class="mt-1 font-mono text-sm font-semibold text-teal-200" data-i18n="mockup.protected">Protected</p>
+                    </div>
+                  </div>
+                  <div class="h-px w-full bg-gradient-to-r from-transparent via-teal-400/40 to-transparent"></div>
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex -space-x-2">
+                      <span class="h-8 w-8 rounded-full border border-teal-400/40 bg-gradient-to-br from-teal-400 to-cyan-600"></span>
+                      <span class="h-8 w-8 rounded-full border border-white/10 bg-slate-700/80"></span>
+                      <span class="h-8 w-8 rounded-full border border-white/10 bg-slate-800/80"></span>
+                    </div>
+                    <span class="rounded-full border border-cyan-400/35 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold text-cyan-100" data-i18n="mockup.launch">
+                      Ready to launch
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3">
-                <div class="text-xs text-muted">Quality</div>
-                <div class="font-bold">Premium</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3">
-                <div class="text-xs text-muted">Support</div>
-                <div class="font-bold">Direct</div>
+              <div class="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-black/40 px-4 py-3">
+                <span class="h-2 w-16 rounded-full bg-gradient-to-r from-slate-700 via-slate-600 to-slate-700"></span>
+                <span class="h-2 flex-1 rounded-full bg-gradient-to-r from-teal-600/40 via-cyan-500/50 to-teal-600/40"></span>
               </div>
             </div>
-            <div class="mt-4 flex items-center gap-3 border-t border-white/10 pt-3 text-xs text-muted">
-              <span class="font-mono">Deploy-ready</span>
-              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-              <span class="font-mono">Secure by design</span>
-            </div>
-          </aside>
+          </div>
         </div>
       </section>
 
-      <section class="pb-3" aria-label="Live metrics">
+      <!-- Metrics strip -->
+      <section class="relative pb-6" data-i18n-aria="aria.highlights" aria-label="Highlights">
         <div class="mx-auto w-full max-w-6xl px-6">
-          <div class="flex flex-col gap-3 rounded-3xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl lg:flex-row lg:items-center lg:justify-between">
+          <div
+            class="reveal zas-glass flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:justify-between"
+            data-reveal
+          >
             <div class="flex flex-col gap-2">
-              <span class="font-mono text-xs tracking-[.22em] text-muted">SYSTEM OUTPUT</span>
-              <span class="flex items-center gap-2 text-xs text-muted">
-                <span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
-                <span class="font-mono">System Ready · Modules Active · Connection Stable</span>
+              <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500" data-i18n="metrics.title">At a glance</span>
+              <span class="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+                <span class="inline-flex h-2 w-2 rounded-full bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.8)]"></span>
+                <span data-i18n="metrics.line">Apps · Safe online · AI · Smart cameras · Going digital</span>
               </span>
             </div>
-            <div class="grid grid-cols-1 gap-2 sm:grid-cols-3" role="list">
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3" role="listitem">
-                <div class="font-sora text-2xl font-bold">
-                  <span class="count" data-count="12">0</span><span class="text-primary">+</span>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
+              <div class="rounded-2xl border border-white/[0.08] bg-black/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" role="listitem">
+                <div class="font-display text-2xl font-bold text-white">
+                  <span class="count text-teal-300" data-count="24">0</span><span class="text-cyan-400">+</span>
                 </div>
-                <div class="text-xs text-muted">Projects Delivered</div>
+                <div class="text-xs text-slate-500" data-i18n="metrics.s1">Solutions shipped</div>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3" role="listitem">
-                <div class="font-sora text-2xl font-bold">
-                  <span class="count" data-count="5">0</span><span class="text-primary">+</span>
+              <div class="rounded-2xl border border-white/[0.08] bg-black/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" role="listitem">
+                <div class="font-display text-2xl font-bold text-white">
+                  <span class="count text-teal-300" data-count="5">0</span>
                 </div>
-                <div class="text-xs text-muted">AI Systems</div>
+                <div class="text-xs text-slate-500" data-i18n="metrics.s2">Main service areas</div>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-3" role="listitem">
-                <div class="font-sora text-2xl font-bold"><span class="count" data-count="3">0</span></div>
-                <div class="text-xs text-muted">Core Capabilities</div>
+              <div class="rounded-2xl border border-white/[0.08] bg-black/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" role="listitem">
+                <div class="font-display text-2xl font-bold text-white">
+                  <span class="count text-teal-300" data-count="100">0</span><span class="text-cyan-400">%</span>
+                </div>
+                <div class="text-xs text-slate-500" data-i18n="metrics.s3">Commitment to quality</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" class="scroll-mt-24 py-16">
+      <!-- Services -->
+      <section id="services" class="scroll-mt-24 py-16 md:py-20">
         <div class="mx-auto w-full max-w-6xl px-6">
-          <header class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <h2 class="font-sora text-2xl font-bold tracking-tight">Services</h2>
-            <p class="max-w-2xl text-muted">
-              Not “cards” — modules. Each block is built to feel like part of a futuristic dashboard.
+          <header class="reveal mb-10 max-w-3xl" data-reveal>
+            <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="services.kicker">Services</p>
+            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="services.title">What we can do for you</h2>
+            <p class="mt-4 text-slate-400" data-i18n="services.intro">
+              Clear services you can choose from — built to work together when you need more than one. Safety and quality matter on every project.
             </p>
           </header>
 
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-            <article class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl hover:border-primary/30 hover:-translate-y-1 transition">
-              <div class="mb-3 flex items-center justify-between">
-                <div class="grid h-11 w-11 place-items-center rounded-2xl border border-primary/20 bg-primary/10 font-bold text-white/90">⌘</div>
-                <div class="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-white/90">Web</div>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article
+              class="reveal zas-glass zas-glass-hover group relative overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-teal-500/10 blur-3xl transition duration-500 group-hover:bg-teal-400/15" aria-hidden="true"></div>
+              <div class="relative mb-5 flex items-center justify-between">
+                <span class="grid h-14 w-14 place-items-center rounded-2xl border border-teal-400/30 bg-black/40 text-teal-300 shadow-[0_0_28px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50 group-hover:shadow-[0_0_36px_rgba(45,212,191,0.22)]">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25M9.75 9.75L7.5 12l2.25 2.25M6 18h12a2 2 0 002-2V8a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-100" data-i18n="services.soft.tag">Build</span>
               </div>
-              <h3 class="font-sora text-lg font-semibold">Web Development</h3>
-              <p class="mt-2 text-muted">Modern, fast websites and web apps with clean UX and scalable architecture.</p>
-              <details class="mt-4 rounded-2xl border border-white/10 bg-bg/20 p-4">
-                <summary class="cursor-pointer list-none font-semibold text-white/90">
-                  Deliverables
-                  <span class="ml-2 text-xs text-muted">(tap to expand)</span>
-                </summary>
-                <ul class="mt-3 list-disc pl-5 text-white/80">
-                  <li>Design systems</li>
-                  <li>Performance-first builds</li>
-                  <li>Secure integrations</li>
-                </ul>
-              </details>
+              <h3 class="font-display text-xl font-semibold text-white" data-i18n="services.soft.title">Software Development</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400" data-i18n="services.soft.desc">
+                Custom software that connects your tools and teams: internal apps, integrations with other systems, and code that is easy to maintain as you grow.
+              </p>
             </article>
 
-            <article class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl hover:border-primary/30 hover:-translate-y-1 transition">
-              <div class="mb-3 flex items-center justify-between">
-                <div class="grid h-11 w-11 place-items-center rounded-2xl border border-primary/20 bg-primary/10 font-bold text-white/90">⬡</div>
-                <div class="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white/90">Mobile</div>
+            <article
+              class="reveal zas-glass zas-glass-hover group relative overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl transition duration-500 group-hover:bg-cyan-400/15" aria-hidden="true"></div>
+              <div class="relative mb-5 flex items-center justify-between">
+                <span class="grid h-14 w-14 place-items-center rounded-2xl border border-cyan-400/30 bg-black/40 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.15)] transition duration-300 group-hover:border-cyan-400/50">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75l7.5 3.75v4.5c0 4.67-3.15 8.85-7.5 9.75-4.35-.9-7.5-5.08-7.5-9.75v-4.5L12 3.75zM9 12l2 2 4-4" />
+                  </svg>
+                </span>
+                <span class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cyan-100" data-i18n="services.cyber.tag">Protect</span>
               </div>
-              <h3 class="font-sora text-lg font-semibold">Mobile Development</h3>
-              <p class="mt-2 text-muted">Smooth, reliable mobile experiences that feel native and ship on a fast cycle.</p>
-              <details class="mt-4 rounded-2xl border border-white/10 bg-bg/20 p-4">
-                <summary class="cursor-pointer list-none font-semibold text-white/90">
-                  Deliverables
-                  <span class="ml-2 text-xs text-muted">(tap to expand)</span>
-                </summary>
-                <ul class="mt-3 list-disc pl-5 text-white/80">
-                  <li>Cross-platform delivery</li>
-                  <li>Offline-ready UX</li>
-                  <li>App-store readiness</li>
-                </ul>
-              </details>
+              <h3 class="font-display text-xl font-semibold text-white" data-i18n="services.cyber.title">Cybersecurity</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400" data-i18n="services.cyber.desc">
+                Stronger protection for your data and accounts: safer setups, sensible checks, and practical steps that lower risk without blocking your work.
+              </p>
             </article>
 
-            <article class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl hover:border-primary/30 hover:-translate-y-1 transition">
-              <div class="mb-3 flex items-center justify-between">
-                <div class="grid h-11 w-11 place-items-center rounded-2xl border border-primary/20 bg-primary/10 font-bold text-white/90">◎</div>
-                <div class="rounded-full border border-secondary/25 bg-secondary/10 px-3 py-1 text-xs font-semibold text-white/90">AI</div>
+            <article
+              class="reveal zas-glass zas-glass-hover group relative overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-teal-500/10 blur-3xl transition duration-500 group-hover:bg-teal-400/15" aria-hidden="true"></div>
+              <div class="relative mb-5 flex items-center justify-between">
+                <span class="grid h-14 w-14 place-items-center rounded-2xl border border-teal-400/30 bg-black/40 text-teal-200 shadow-[0_0_28px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h7.5v4.5h-7.5zM8.25 15h7.5v4.5h-7.5zM4.5 9.75h3v4.5h-3zM16.5 9.75h3v4.5h-3z" />
+                  </svg>
+                </span>
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-100" data-i18n="services.ai.tag">Intelligence</span>
               </div>
-              <h3 class="font-sora text-lg font-semibold">AI Solutions</h3>
-              <p class="mt-2 text-muted">Practical AI interfaces and automation that turn complex workflows into simple systems.</p>
-              <details class="mt-4 rounded-2xl border border-white/10 bg-bg/20 p-4">
-                <summary class="cursor-pointer list-none font-semibold text-white/90">
-                  Deliverables
-                  <span class="ml-2 text-xs text-muted">(tap to expand)</span>
-                </summary>
-                <ul class="mt-3 list-disc pl-5 text-white/80">
-                  <li>AI-powered dashboards</li>
-                  <li>Workflow automation</li>
-                  <li>Smart search &amp; insights</li>
-                </ul>
-              </details>
+              <h3 class="font-display text-xl font-semibold text-white" data-i18n="services.ai.title">AI Solutions</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400" data-i18n="services.ai.desc">
+                Artificial intelligence that saves time: helpers for your staff, automatic sorting or tagging, simple dashboards, and smarter answers from your own data.
+              </p>
+            </article>
+
+            <article
+              class="reveal zas-glass zas-glass-hover group relative overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-teal-500/10 blur-3xl transition duration-500 group-hover:bg-teal-400/15" aria-hidden="true"></div>
+              <div class="relative mb-5 flex items-center justify-between">
+                <span class="grid h-14 w-14 place-items-center rounded-2xl border border-teal-400/30 bg-black/40 text-teal-200 shadow-[0_0_28px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12s3.75-6 9.75-6 9.75 6 9.75 6-3.75 6-9.75 6-9.75-6-9.75-6z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </span>
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-100" data-i18n="services.vision.tag">Vision</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-white" data-i18n="services.vision.title">Computer Vision</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400" data-i18n="services.vision.desc">
+                Teach cameras and photos to "see" for your business: spotting objects or defects, counting items, and supporting checks — on your premises or using cloud tools when it fits.
+              </p>
+            </article>
+
+            <article
+              class="reveal zas-glass zas-glass-hover group relative overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl transition duration-500 group-hover:bg-cyan-400/15" aria-hidden="true"></div>
+              <div class="relative mb-5 flex items-center justify-between">
+                <span class="grid h-14 w-14 place-items-center rounded-2xl border border-teal-400/30 bg-black/40 text-teal-200 shadow-[0_0_28px_rgba(45,212,191,0.15)] transition duration-300 group-hover:border-teal-400/50">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 7.5h15v9h-15zM8.25 19.5v-3M15.75 19.5v-3M9 4.5h6l1.5 3h-9l1.5-3z" />
+                  </svg>
+                </span>
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-100" data-i18n="services.web.tag">Experience</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-white" data-i18n="services.web.title">Web &amp; Mobile Applications</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400" data-i18n="services.web.desc">
+                Websites and phone apps that look good and are easy to use — fast loading, clear layouts, and steady updates when you need them.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="process" class="scroll-mt-24 border-y border-white/10 bg-surface/10 py-16">
-        <div class="mx-auto w-full max-w-6xl px-6">
-          <header class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <h2 class="font-sora text-2xl font-bold tracking-tight">How We Work</h2>
-            <p class="max-w-2xl text-muted">A clear pipeline — engineered to reduce risk and ship fast.</p>
-          </header>
-
-          <div class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl" role="list" aria-label="Delivery pipeline">
-            <div class="grid grid-cols-1 gap-3 lg:grid-cols-4">
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-4" role="listitem">
-                <div class="mb-3 h-3 w-3 rounded-full bg-primary"></div>
-                <div class="font-sora font-semibold">Understand</div>
-                <div class="mt-2 text-sm text-muted">We map goals, constraints, and success metrics.</div>
+      <!-- About -->
+      <section id="about" class="scroll-mt-24 border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent py-16 md:py-20">
+        <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="about.kicker">About us</p>
+            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="about.title">Practical tech, explained clearly</h2>
+            <p class="mt-5 text-slate-400 leading-relaxed" data-i18n="about.p1">
+              ZAS Tech builds digital products and technology solutions for businesses that want results they can trust. We turn messy ideas into simple,
+              working software — and we explain choices in plain language, not jargon.
+            </p>
+            <p class="mt-4 text-slate-400 leading-relaxed" data-i18n="about.p2">
+              Whether you are updating old manual processes or starting something new, we stay close from first conversation through launch: clear steps,
+              realistic timelines, and room to adjust as we learn together.
+            </p>
+            <div class="mt-8 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl">
+                <p class="text-xs uppercase tracking-[0.18em] text-slate-500" data-i18n="about.focusL">We focus on</p>
+                <p class="mt-2 font-semibold text-white" data-i18n="about.focusB">Apps · AI · Safe systems · Camera tech · Websites</p>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-4" role="listitem">
-                <div class="mb-3 h-3 w-3 rounded-full bg-primary"></div>
-                <div class="font-sora font-semibold">Design</div>
-                <div class="mt-2 text-sm text-muted">We shape a clean UX and a scalable system plan.</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-4" role="listitem">
-                <div class="mb-3 h-3 w-3 rounded-full bg-primary"></div>
-                <div class="font-sora font-semibold">Build</div>
-                <div class="mt-2 text-sm text-muted">We implement quickly with precision and feedback loops.</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-4" role="listitem">
-                <div class="mb-3 h-3 w-3 rounded-full bg-secondary"></div>
-                <div class="font-sora font-semibold">Deliver</div>
-                <div class="mt-2 text-sm text-muted">We ship stable, deploy-ready systems with support.</div>
+              <div class="rounded-2xl border border-teal-400/20 bg-teal-500/5 p-4 backdrop-blur-xl">
+                <p class="text-xs uppercase tracking-[0.18em] text-teal-200/80" data-i18n="about.workL">How we work</p>
+                <p class="mt-2 font-semibold text-teal-50" data-i18n="about.workB">Regular updates &amp; goals you can measure</p>
               </div>
             </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">Weekly updates</span>
-              <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">Clear milestones</span>
-              <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">Deploy-ready delivery</span>
+          </div>
+
+          <div class="reveal relative" data-reveal>
+            <div class="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-teal-500/15 via-transparent to-cyan-500/10 blur-2xl"></div>
+            <div class="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-zas-panel/50 p-8 shadow-glass backdrop-blur-2xl">
+              <div class="absolute right-6 top-6 h-24 w-24 rounded-full bg-cyan-400/10 blur-2xl"></div>
+              <h3 class="font-display text-lg font-semibold text-white" data-i18n="about.cardTitle">What we care about</h3>
+              <ul class="mt-6 space-y-4 text-sm text-slate-400">
+                <li class="flex gap-3">
+                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.85)]"></span>
+                  <span data-i18n="about.pt1">Reliability — systems that stay up when people depend on them.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.75)]"></span>
+                  <span data-i18n="about.pt2">Security — safer defaults for data and logins.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.75)]"></span>
+                  <span data-i18n="about.pt3">Steady progress — useful releases on a schedule you can plan around.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="why" class="scroll-mt-24 border-b border-white/10 bg-surface/10 py-16">
+      <!-- Projects -->
+      <section id="projects" class="scroll-mt-24 py-16 md:py-20">
         <div class="mx-auto w-full max-w-6xl px-6">
-          <header class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <h2 class="font-sora text-2xl font-bold tracking-tight">Why ZAS Tech</h2>
-            <p class="max-w-2xl text-muted">Trust signals — short, strong, and engineered for confidence.</p>
+          <header class="reveal mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between" data-reveal>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90" data-i18n="projects.kicker">Examples</p>
+              <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl" data-i18n="projects.title">Sample projects</h2>
+            </div>
+            <p class="max-w-xl text-slate-400" data-i18n="projects.intro">
+              The kinds of work we take on — names can be changed for privacy. Each project is shaped around the client’s real needs.
+            </p>
           </header>
 
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
-            <div class="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="font-bold">Modern architecture</div>
-              <div class="mt-2 text-sm text-muted">Built to scale cleanly as your product grows.</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="font-bold">Scalable solutions</div>
-              <div class="mt-2 text-sm text-muted">Systems designed for speed, reliability, and clarity.</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="font-bold">Clean user experience</div>
-              <div class="mt-2 text-sm text-muted">Premium UI — calm, minimal, and purposeful.</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="font-bold">Custom-built systems</div>
-              <div class="mt-2 text-sm text-muted">No generic templates — solutions shaped to your needs.</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-surface/40 p-4 backdrop-blur-xl">
-              <div class="font-bold">Fast development cycle</div>
-              <div class="mt-2 text-sm text-muted">Move quickly without sacrificing quality.</div>
-            </div>
+          <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+            <article
+              class="reveal zas-glass zas-glass-hover group relative flex flex-col overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent opacity-80" aria-hidden="true"></div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold text-teal-100">Platform</span>
+                <span class="font-mono text-[11px] text-slate-500">2025</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-white">Operations dashboard</h3>
+              <p class="mt-3 flex-1 text-sm text-slate-400">
+                One screen for a leadership team to see live numbers, who can see what, and simple alerts when something needs attention.
+              </p>
+              <div class="mt-6 h-px w-full bg-gradient-to-r from-teal-400/50 via-cyan-400/30 to-transparent"></div>
+              <p class="mt-4 text-xs text-slate-500">Built with a modern website stack and secure connections between services.</p>
+            </article>
+
+            <article
+              class="reveal zas-glass zas-glass-hover group relative flex flex-col overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/35 to-transparent opacity-80" aria-hidden="true"></div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold text-cyan-100">Vision</span>
+                <span class="font-mono text-[11px] text-slate-500">2025</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-white">Factory checks with cameras</h3>
+              <p class="mt-3 flex-1 text-sm text-slate-400">
+                Camera-based inspection with a simple review screen so staff spend less time on false alarms and more time fixing real issues.
+              </p>
+              <div class="mt-6 h-px w-full bg-gradient-to-r from-teal-400/50 via-cyan-400/30 to-transparent"></div>
+              <p class="mt-4 text-xs text-slate-500">Includes tuning the model and safe rollout steps.</p>
+            </article>
+
+            <article
+              class="reveal zas-glass zas-glass-hover group relative flex flex-col overflow-hidden p-7"
+              data-reveal
+            >
+              <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-400/40 to-transparent opacity-80" aria-hidden="true"></div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold text-teal-100">Security</span>
+                <span class="font-mono text-[11px] text-slate-500">2024</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-white">Safer logins for a growing product</h3>
+              <p class="mt-3 flex-1 text-sm text-slate-400">
+                Tighter rules for who can access what, without making everyday login painful for customers.
+              </p>
+              <div class="mt-6 h-px w-full bg-gradient-to-r from-teal-400/50 via-cyan-400/30 to-transparent"></div>
+              <p class="mt-4 text-xs text-slate-500">Result: smaller target for attackers, same smooth experience for users.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="faq" class="scroll-mt-24 py-16">
+      <!-- Contact -->
+      <section id="contact" class="scroll-mt-24 pb-20 pt-4">
         <div class="mx-auto w-full max-w-6xl px-6">
-          <header class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <h2 class="font-sora text-2xl font-bold tracking-tight">FAQ</h2>
-            <p class="max-w-2xl text-muted">Quick answers to reduce hesitation.</p>
+          <header class="reveal mb-10" data-reveal>
+            <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90">Contact</p>
+            <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-white md:text-4xl">Get in touch</h2>
+            <p class="mt-4 max-w-2xl text-slate-400">
+              Send a short note about what you need. We’ll reply with next steps, a rough timeline, and honest expectations — no hard sell.
+            </p>
           </header>
 
-          <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
-            <details class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl">
-              <summary class="cursor-pointer list-none font-sora font-semibold text-white/90">What’s the typical timeline?</summary>
-              <p class="mt-3 text-sm text-muted">
-                Most builds start with a short discovery, then ship in clear milestones. Small sites can move fast; larger systems are phased.
-              </p>
-            </details>
-            <details class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl">
-              <summary class="cursor-pointer list-none font-sora font-semibold text-white/90">What do you need from me?</summary>
-              <p class="mt-3 text-sm text-muted">
-                Goals, must-have features, timeline, and any references. We’ll handle structure, UX, and implementation details.
-              </p>
-            </details>
-            <details class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl">
-              <summary class="cursor-pointer list-none font-sora font-semibold text-white/90">How do we start?</summary>
-              <p class="mt-3 text-sm text-muted">
-                Send a message with what you need. We reply with next steps and a clear plan.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="scroll-mt-24 py-16">
-        <div class="mx-auto w-full max-w-6xl px-6">
-          <header class="mb-6 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <h2 class="font-sora text-2xl font-bold tracking-tight">Contact Us</h2>
-            <p class="max-w-2xl text-muted">Send a message — we’ll respond with a clear next step.</p>
-          </header>
-
-          <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <form
-              class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl"
+              class="reveal zas-glass relative overflow-hidden p-7 shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
               name="contact"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/thank-you.html"
+              action="thank-you.html"
+              data-reveal
             >
               <input type="hidden" name="form-name" value="contact" />
               <p class="hidden">
                 <label>Don’t fill this out: <input name="bot-field" /></label>
               </p>
-              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <label class="flex flex-col gap-2">
-                  <span class="text-xs uppercase tracking-[.14em] text-muted">Your Name</span>
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-slate-500">Name</span>
                   <input
-                    class="w-full rounded-2xl border border-white/10 bg-bg/30 px-4 py-3 text-white/90 outline-none placeholder:text-muted/70 focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
+                    class="w-full rounded-2xl border border-white/10 bg-zas-night/50 px-4 py-3 text-white/95 outline-none placeholder:text-slate-600 focus:border-teal-400/45 focus:ring-4 focus:ring-teal-400/15"
                     name="name"
                     type="text"
                     autocomplete="name"
-                    placeholder="Full name"
+                    placeholder="Your name"
                     required
                   />
                 </label>
                 <label class="flex flex-col gap-2">
-                  <span class="text-xs uppercase tracking-[.14em] text-muted">Email</span>
+                  <span class="text-[11px] uppercase tracking-[0.16em] text-slate-500">Email</span>
                   <input
-                    class="w-full rounded-2xl border border-white/10 bg-bg/30 px-4 py-3 text-white/90 outline-none placeholder:text-muted/70 focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
+                    class="w-full rounded-2xl border border-white/10 bg-zas-night/50 px-4 py-3 text-white/95 outline-none placeholder:text-slate-600 focus:border-teal-400/45 focus:ring-4 focus:ring-teal-400/15"
                     name="email"
                     type="email"
                     autocomplete="email"
-                    placeholder="you@company.com"
+                    placeholder="you@organization.com"
                     required
                   />
                 </label>
               </div>
 
-              <label class="mt-3 flex flex-col gap-2">
-                <span class="text-xs uppercase tracking-[.14em] text-muted">What do you need?</span>
+              <label class="mt-4 flex flex-col gap-2">
+                <span class="text-[11px] uppercase tracking-[0.16em] text-slate-500">Project details</span>
                 <textarea
-                  class="min-h-[160px] w-full resize-y rounded-2xl border border-white/10 bg-bg/30 px-4 py-3 text-white/90 outline-none placeholder:text-muted/70 focus:border-primary/40 focus:ring-4 focus:ring-primary/10"
+                  class="min-h-[160px] w-full resize-y rounded-2xl border border-white/10 bg-zas-night/50 px-4 py-3 text-white/95 outline-none placeholder:text-slate-600 focus:border-teal-400/45 focus:ring-4 focus:ring-teal-400/15"
                   name="message"
                   rows="5"
-                  placeholder="Tell us about your project goals, timeline, and any references."
+                  placeholder="What you want to achieve, when you hope to start, and anything else we should know."
                   required
                 ></textarea>
               </label>
 
-              <div class="mt-4 flex flex-wrap gap-3">
+              <div class="mt-6 flex flex-wrap gap-3">
                 <button
-                  class="inline-flex items-center justify-center rounded-full border border-primary/60 bg-primary/90 px-4 py-3 font-semibold shadow-[0_18px_55px_rgba(37,99,235,.26)] hover:bg-primary transition"
+                  class="inline-flex items-center justify-center rounded-full border border-teal-400/50 bg-gradient-to-r from-teal-500/90 to-cyan-500/85 px-5 py-3 font-semibold text-zas-night shadow-glow transition hover:shadow-[0_0_40px_rgba(45,212,191,0.35)]"
                   type="submit"
                 >
-                  Send Message
+                  Send message
                 </button>
                 <a
-                  class="inline-flex items-center justify-center rounded-full border border-white/10 bg-surface/20 px-4 py-3 font-semibold hover:bg-surface/30 transition"
-                  href="mailto:contact@zas.tech?subject=Start%20a%20Project"
-                  >Email Directly</a
+                  class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-semibold text-white transition hover:border-teal-400/35 hover:bg-teal-500/10"
+                  href="mailto:info@zas-tech.krd?subject=Project%20inquiry%20%E2%80%94%20ZAS%20Tech"
+                  >Email us</a
                 >
               </div>
-              <div class="mt-3 font-mono text-xs text-muted">No spam. Clear replies. Fast turnaround.</div>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">UI + code</span>
-                <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">Deployment</span>
-                <span class="rounded-full border border-white/10 bg-bg/25 px-3 py-2 text-xs font-semibold text-white/85">Support</span>
-              </div>
+              <p class="mt-4 font-mono text-[11px] text-slate-500">We answer with clear next steps — no fluff.</p>
             </form>
 
-            <aside class="rounded-3xl border border-white/10 bg-surface/40 p-5 backdrop-blur-xl">
-              <div class="rounded-2xl border border-white/10 bg-bg/25 p-4">
-                <div class="font-sora text-base font-bold">Start a Project</div>
-                <div class="mt-2 text-sm text-muted">Share your idea and we’ll map the fastest path to a working system.</div>
-                <a
-                  class="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-bg/25 px-4 py-3 font-mono text-xs text-white/90 hover:border-primary/25 hover:bg-bg/35 transition"
-                  href="mailto:contact@zas.tech?subject=Start%20a%20Project"
-                  >contact@zas.tech</a
-                >
+            <aside class="reveal flex flex-col gap-5" data-reveal>
+              <div class="zas-glass p-6 shadow-glass">
+                <h3 class="font-display text-lg font-semibold text-white">Contact details</h3>
+                <p class="mt-2 text-sm text-slate-400">Email or call us for new projects, questions, or a quick chat about fit.</p>
+                <div class="mt-6 space-y-4">
+                  <a
+                    class="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-zas-night/40 px-4 py-4 transition hover:border-teal-400/35"
+                    href="mailto:info@zas-tech.krd"
+                  >
+                    <div>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Email</p>
+                      <p class="mt-1 font-mono text-sm text-teal-200">info@zas-tech.krd</p>
+                    </div>
+                    <span class="rounded-full border border-teal-400/30 bg-teal-500/10 px-3 py-1 text-[11px] font-semibold text-teal-100">Mail</span>
+                  </a>
+                  <a
+                    class="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-zas-night/40 px-4 py-4 transition hover:border-teal-400/35"
+                    href="tel:+9647501514519"
+                  >
+                    <div>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500">Phone</p>
+                      <p class="mt-1 font-mono text-sm text-white">0750 151 4519</p>
+                    </div>
+                    <span class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold text-cyan-100">Call</span>
+                  </a>
+                </div>
               </div>
 
-              <div class="mt-3 rounded-2xl border border-secondary/20 bg-secondary/5 p-4">
-                <div class="font-sora text-base font-bold">System Availability</div>
-                <div class="mt-2 text-sm text-muted">Currently accepting new builds and ongoing product support.</div>
-                <div class="mt-3 flex items-center gap-2 text-xs text-muted">
-                  <span class="h-2 w-2 rounded-full bg-secondary"></span>
-                  <span class="font-mono">Online</span>
+              <div class="zas-glass border-teal-400/25 bg-teal-500/[0.07] p-6 shadow-[0_0_40px_rgba(45,212,191,0.06)]">
+                <div class="flex items-center gap-3">
+                  <span class="h-2.5 w-2.5 rounded-full bg-teal-400 shadow-[0_0_18px_rgba(45,212,191,0.85)]"></span>
+                  <p class="font-semibold text-teal-50">Accepting new engagements</p>
                 </div>
+                <p class="mt-3 text-sm text-slate-400">
+                  Tell us what you need — we’ll agree on scope, schedule, and how we keep your data safe before we start.
+                </p>
               </div>
             </aside>
           </div>
@@ -631,42 +982,32 @@
       </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-bg/60 py-7 backdrop-blur-xl">
-      <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-6">
-        <div>
-          <div class="flex items-center gap-3">
-            <img
-              class="h-9 w-9 rounded-xl border border-white/10 bg-surface/60 object-cover"
-              src="./assets/logo.JPG"
-              alt="ZAS Tech"
-              width="36"
-              height="36"
-              loading="lazy"
-              decoding="async"
-            />
-            <span class="font-sora font-semibold">ZAS Tech</span>
+    <footer class="border-t border-white/[0.06] bg-black/50 py-10 backdrop-blur-2xl">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-start gap-4">
+          <span class="grid h-11 w-11 place-items-center overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img class="h-full w-full object-cover" src="./assets/logo.JPG" alt="" width="44" height="44" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+          </span>
+          <div>
+            <div class="font-display text-base font-bold text-white">ZAS Tech</div>
+            <p class="mt-1 text-sm text-slate-500">Software, apps, AI, online safety, smart cameras, and helping you go digital.</p>
           </div>
-          <div class="mt-1 text-sm text-muted">Premium web, mobile & AI systems.</div>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <a class="rounded-full px-3 py-2 text-sm text-muted hover:bg-surface/20 hover:text-white transition" href="#top"
-            >Top</a
-          >
-          <a
-            class="rounded-full px-3 py-2 text-sm text-muted hover:bg-surface/20 hover:text-white transition"
-            href="#services"
-            >Services</a
-          >
-          <a
-            class="rounded-full px-3 py-2 text-sm text-muted hover:bg-surface/20 hover:text-white transition"
-            href="#process"
-            >Process</a
-          >
+        <div class="flex flex-wrap gap-2 text-sm">
+          <a class="rounded-full px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white" href="#top">Home</a>
+          <a class="rounded-full px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white" href="#services">Services</a>
+          <a class="rounded-full px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white" href="#projects">Projects</a>
+          <a class="rounded-full px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white" href="#contact">Contact</a>
         </div>
+      </div>
+      <div class="mx-auto mt-8 w-full max-w-6xl border-t border-white/10 px-6 pt-6 text-center text-[11px] text-slate-600 md:text-left">
+        © <span id="y"></span> ZAS Tech. All rights reserved.
       </div>
     </footer>
 
+    <script>
+      document.getElementById("y").textContent = String(new Date().getFullYear());
+    </script>
     <script src="./static/main.js" defer></script>
   </body>
 </html>
-
