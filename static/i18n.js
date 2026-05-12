@@ -154,10 +154,10 @@
         a4: "We review your note, reply with practical next steps, and agree on scope, timing, and how we handle your data before work starts.",
       },
       projects: {
-        kicker: "Examples",
-        title: "Sample projects",
+        kicker: "Portfolio",
+        title: "Projects",
         intro:
-          "The kinds of work we take on — names can be changed for privacy. Each project is shaped around the client’s real needs.",
+          "Recent work across platforms, vision, and security — each engagement scoped and delivered around what the client needed.",
         p1: {
           tag: "Platform",
           title: "Operations dashboard",
@@ -368,10 +368,10 @@
         a4: "نامەکەت دەخوێنینەوە، وەڵامی عملی دەدەینەوە، و پێش دەستپێکردن لەسەر سنوور، کات، و پاراستنی زانیاری ڕێکدەخەین.",
       },
       projects: {
-        kicker: "نموونەکان",
-        title: "پرۆژەی نموونەیی",
+        kicker: "کارەکانمان",
+        title: "پرۆژەکان",
         intro:
-          "جۆری کارەکان کە دەمانگرێت — ناوەکان دەتوانن بگۆڕدرێن بۆ نھێنیاتی. ھەر پرۆژەیەک بە پێداویستی ڕاستەقینی کڕیار دروست دەکرێت.",
+          "کارە نوێیەکان لە پلاتفۆرم و بینین و ئاسایش — ھەر یەک بە پێداویستی کڕیار دیاری و گەیاندن دەکرێت.",
         p1: {
           tag: "پلاتفۆرم",
           title: "داشبۆردی کارگێڕی",
@@ -582,10 +582,10 @@
         a4: "نراجع رسالتك ونرد بخطوات عملية ونتفق على النطاق والتوقيت وكيفية التعامل مع بياناتك قبل البدء.",
       },
       projects: {
-        kicker: "أمثلة",
-        title: "مشاريع نموذجية",
+        kicker: "أعمالنا",
+        title: "مشاريعنا",
         intro:
-          "أنواع العمل الذي نقوم به — يمكن تغيير الأسماء لأسباب خصوصية. يُشكَّل كل مشروع حول احتياجات العميل الفعلية.",
+          "أعمال حديثة عبر المنصات والرؤية والأمان — كل مشروع يُحدَّد ويُنفَّذ وفق ما يحتاجه العميل.",
         p1: {
           tag: "منصة",
           title: "لوحة عمليات",
