@@ -390,28 +390,7 @@
                 />
                 <span class="text-[11px] text-slate-600">Maximum file size depends on your Netlify plan (typically up to 10 MB).</span>
               </label>
-              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <label class="flex flex-col gap-2">
-                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Availability per week <span class="text-teal-400">*</span></span>
-                  <select class="zas-select" name="availability_hours" required>
-                    <option value="" disabled selected>Hours per week</option>
-                    <option value="10–15 hours">10–15 hours</option>
-                    <option value="15–20 hours">15–20 hours</option>
-                    <option value="20–30 hours">20–30 hours</option>
-                    <option value="30+ hours">30+ hours</option>
-                    <option value="Full-time">Full-time</option>
-                  </select>
-                </label>
-                <label class="flex flex-col gap-2">
-                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Paid internship interest <span class="text-teal-400">*</span></span>
-                  <select class="zas-select" name="paid_interest" required>
-                    <option value="" disabled selected>Select one</option>
-                    <option value="Yes">Yes, I am interested</option>
-                    <option value="No">No, unpaid is fine</option>
-                    <option value="Either">Either — open to both</option>
-                  </select>
-                </label>
-              </div>
+              
             </fieldset>
 
             <div class="mt-10 border-t border-white/10 pt-8">
@@ -479,7 +458,6 @@
       <textarea name="motivation"></textarea>
       <input name="cv" type="file" />
       <input name="availability_hours" />
-      <input name="paid_interest" />
       <input name="confirm" />
     </form>
 
