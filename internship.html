@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030712" />
+    <meta
+      name="description"
+      content="Apply to the ZAS Tech Internship Program — professional mentorship, real projects, and interview-based selection for students and fresh graduates."
+    />
+    <title>Internship Application — ZAS Tech</title>
+    <link rel="icon" href="./assets/logo.JPG" />
+    <link rel="canonical" href="https://zas.tech/internship.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              zas: {
+                black: "#000000",
+                night: "#030712",
+                deep: "#042f2e",
+                panel: "#0f172a",
+                muted: "#94a3b8",
+                text: "#f8fafc",
+              },
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "system-ui", "Segoe UI", "sans-serif"],
+              display: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              mono: ['"JetBrains Mono"', "ui-monospace", "Cascadia Mono", "monospace"],
+            },
+            boxShadow: {
+              glow: "0 0 80px rgba(45, 212, 191, 0.22), 0 25px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255,255,255,0.06)",
+              "glow-sm": "0 0 32px rgba(34, 211, 238, 0.18)",
+              glass: "0 8px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.07)",
+            },
+            backgroundImage: {
+              "grid-fade":
+                "linear-gradient(to right, rgba(148,163,184,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,0.06) 1px, transparent 1px)",
+              "hero-fade":
+                "radial-gradient(ellipse 90% 65% at 50% -15%, rgba(4, 47, 46, 0.55) 0%, transparent 52%), radial-gradient(ellipse 70% 50% at 100% 20%, rgba(45, 212, 191, 0.12) 0%, transparent 45%), radial-gradient(ellipse 55% 45% at 0% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .zas-glass {
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(15, 23, 42, 0.42);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        box-shadow:
+          0 12px 48px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 0 0 1px rgba(45, 212, 191, 0.04);
+      }
+      .text-gradient-hero {
+        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #99f6e4 95%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .zas-input,
+      .zas-select,
+      .zas-textarea {
+        width: 100%;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(3, 7, 18, 0.5);
+        padding: 0.75rem 1rem;
+        color: rgba(248, 250, 252, 0.95);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .zas-input::placeholder,
+      .zas-textarea::placeholder {
+        color: rgb(71, 85, 105);
+      }
+      .zas-input:focus,
+      .zas-select:focus,
+      .zas-textarea:focus {
+        border-color: rgba(45, 212, 191, 0.45);
+        box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.12);
+      }
+      .zas-input:user-invalid:not(:placeholder-shown),
+      .zas-select:user-invalid,
+      .zas-textarea:user-invalid:not(:placeholder-shown) {
+        border-color: rgba(248, 113, 113, 0.5);
+      }
+      .zas-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+        background-position: right 0.75rem center;
+        background-repeat: no-repeat;
+        background-size: 1.25rem;
+        padding-right: 2.5rem;
+      }
+      .zas-file {
+        width: 100%;
+        border-radius: 1rem;
+        border: 1px dashed rgba(45, 212, 191, 0.35);
+        background: rgba(3, 7, 18, 0.35);
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: rgb(148, 163, 184);
+      }
+      .zas-file::file-selector-button {
+        margin-right: 1rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(45, 212, 191, 0.4);
+        background: rgba(45, 212, 191, 0.12);
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgb(204, 251, 241);
+        cursor: pointer;
+      }
+      html {
+        overflow-x: hidden;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      .font-display {
+        letter-spacing: -0.02em;
+      }
+    </style>
+  </head>
+  <body class="bg-black bg-hero-fade font-sans text-zas-text antialiased overflow-x-hidden">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-full focus:border focus:border-teal-400/30 focus:bg-zas-panel/90 focus:px-4 focus:py-2"
+      href="#main"
+      >Skip to application</a
+    >
+
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-zas-night">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute -left-[22%] top-[-12%] h-[560px] w-[560px] rounded-full bg-[#042f2e]/90 blur-[130px]" aria-hidden="true"></div>
+      <div
+        class="absolute right-[-18%] top-[18%] h-[520px] w-[520px] rounded-full blur-[120px]"
+        style="background: rgba(34, 211, 238, 0.14)"
+        aria-hidden="true"
+      ></div>
+      <div class="absolute inset-0 bg-[size:56px_56px] bg-grid-fade opacity-[0.28]" aria-hidden="true"></div>
+    </div>
+
+    <header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.06] bg-black/55 backdrop-blur-2xl shadow-[0_12px_48px_rgba(0,0,0,0.35)]">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <a class="group flex min-w-0 items-center gap-2 sm:gap-3" href="./index.html#top">
+          <span class="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl border border-teal-400/30 bg-zas-panel/60 sm:h-10 sm:w-10">
+            <img class="h-full w-full object-cover" src="./assets/logo.JPG" alt="" width="40" height="40" decoding="async" />
+          </span>
+          <span class="font-display truncate text-xs font-extrabold tracking-[0.1em] text-white sm:text-sm">ZAS Tech</span>
+        </a>
+        <nav class="flex items-center gap-2 text-xs font-semibold">
+          <a class="hidden rounded-full px-3 py-2 text-white/75 transition hover:bg-white/5 hover:text-white sm:inline-flex" href="./index.html#contact"
+            >Contact</a
+          >
+          <a
+            class="rounded-full border border-teal-400/40 bg-teal-500/12 px-3 py-2 text-teal-50 shadow-[0_0_20px_rgba(45,212,191,0.12)]"
+            href="./internship.html"
+            aria-current="page"
+            >Internship</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="relative z-10 pt-[4.5rem]">
+      <!-- Hero -->
+      <section class="border-b border-white/[0.06] py-14 sm:py-20 md:py-24">
+        <div class="mx-auto w-full max-w-4xl px-4 text-center sm:px-6">
+          <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90">Careers · Internship</p>
+          <h1 class="mt-4 font-display text-[clamp(1.75rem,5vw,2.75rem)] font-extrabold leading-tight tracking-tight">
+            <span class="text-gradient-hero">ZAS Tech Internship Program</span>
+          </h1>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            Join a professional internship experience designed to prepare talented students and fresh graduates for
+            real-world technology projects.
+          </p>
+          <a
+            class="mt-8 inline-flex items-center justify-center rounded-full border border-teal-400/50 bg-gradient-to-r from-teal-500/90 to-cyan-500/85 px-6 py-3 text-sm font-semibold text-zas-night shadow-glow transition hover:shadow-[0_0_40px_rgba(45,212,191,0.35)]"
+            href="#apply"
+            >Apply now</a
+          >
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="py-14 md:py-16">
+        <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <h2 class="text-center font-display text-2xl font-bold text-white md:text-3xl">What you can expect</h2>
+          <p class="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-400 sm:text-base">
+            A structured program built for growth, accountability, and hands-on delivery.
+          </p>
+          <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <li class="zas-glass p-6">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-teal-300/90">01</span>
+              <h3 class="mt-3 font-display text-lg font-semibold text-white">Professional learning environment</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Work with modern tools, clear standards, and a culture that values quality and communication.
+              </p>
+            </li>
+            <li class="zas-glass p-6">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-300/90">02</span>
+              <h3 class="mt-3 font-display text-lg font-semibold text-white">Mentorship</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Guidance from experienced engineers who help you improve skills and professional habits.
+              </p>
+            </li>
+            <li class="zas-glass p-6">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-teal-300/90">03</span>
+              <h3 class="mt-3 font-display text-lg font-semibold text-white">Real project exposure</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Contribute to meaningful work — not busywork — so your portfolio reflects real outcomes.
+              </p>
+            </li>
+            <li class="zas-glass p-6 sm:col-span-2 lg:col-span-1">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-300/90">04</span>
+              <h3 class="mt-3 font-display text-lg font-semibold text-white">Limited paid opportunities</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                A select number of paid internship roles may be available based on performance and business needs.
+              </p>
+            </li>
+            <li class="zas-glass p-6 sm:col-span-2 lg:col-span-2">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-teal-300/90">05</span>
+              <h3 class="mt-3 font-display text-lg font-semibold text-white">Interview-based selection</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Every application is reviewed. Shortlisted candidates are invited to an interview before placement.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Application form -->
+      <section id="apply" class="scroll-mt-24 border-t border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent py-14 md:py-20">
+        <div class="mx-auto w-full max-w-3xl px-4 sm:px-6">
+          <header class="mb-10 text-center">
+            <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-teal-400/90">Application</p>
+            <h2 class="mt-3 font-display text-2xl font-bold text-white md:text-3xl">Internship Application</h2>
+            <p class="mt-3 text-sm text-slate-400">Fields marked with <span class="text-teal-300">*</span> are required. CV must be PDF.</p>
+          </header>
+
+          <form
+            class="zas-glass relative overflow-hidden p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:p-8"
+            name="internship"
+            method="POST"
+            action="/internship-thank-you.html"
+            enctype="multipart/form-data"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="internship" />
+
+            <p class="hidden" aria-hidden="true">
+              <label>Don’t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+
+            <fieldset class="space-y-5 border-0 p-0">
+              <legend class="mb-4 font-display text-lg font-semibold text-white">Personal information</legend>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="flex flex-col gap-2 sm:col-span-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Full Name <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="text" name="full_name" autocomplete="name" required minlength="2" maxlength="120" placeholder="Your full name" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Email <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="email" name="email" autocomplete="email" required placeholder="you@university.edu" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Phone Number <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="tel" name="phone" autocomplete="tel" required placeholder="+964 750 000 0000" />
+                </label>
+                <label class="flex flex-col gap-2 sm:col-span-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">City <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="text" name="city" required maxlength="80" placeholder="Erbil, Sulaymaniyah, …" />
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-10 space-y-5 border-0 border-t border-white/10 p-0 pt-10">
+              <legend class="mb-4 font-display text-lg font-semibold text-white">Education</legend>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="flex flex-col gap-2 sm:col-span-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">University / Institute <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="text" name="university" required maxlength="160" placeholder="University name" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Department / Major <span class="text-teal-400">*</span></span>
+                  <input class="zas-input" type="text" name="department" required maxlength="120" placeholder="Computer Science, IT, …" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Academic Year <span class="text-teal-400">*</span></span>
+                  <select class="zas-select" name="academic_year" required>
+                    <option value="" disabled selected>Select year</option>
+                    <option value="1st year">1st year</option>
+                    <option value="2nd year">2nd year</option>
+                    <option value="3rd year">3rd year</option>
+                    <option value="4th year">4th year</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Fresh graduate">Fresh graduate</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-10 space-y-5 border-0 border-t border-white/10 p-0 pt-10">
+              <legend class="mb-4 font-display text-lg font-semibold text-white">Skills &amp; track</legend>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Internship Track <span class="text-teal-400">*</span></span>
+                  <select class="zas-select" name="internship_track" required>
+                    <option value="" disabled selected>Select track</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Web & Mobile">Web &amp; Mobile</option>
+                    <option value="AI / Machine Learning">AI / Machine Learning</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Computer Vision">Computer Vision</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Current Skill Level <span class="text-teal-400">*</span></span>
+                  <select class="zas-select" name="skill_level" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                  </select>
+                </label>
+                <label class="flex flex-col gap-2 sm:col-span-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Technologies Known <span class="text-teal-400">*</span></span>
+                  <textarea
+                    class="zas-textarea min-h-[100px] resize-y"
+                    name="technologies"
+                    required
+                    maxlength="2000"
+                    placeholder="e.g. Python, React, SQL, Git, …"
+                  ></textarea>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-10 space-y-5 border-0 border-t border-white/10 p-0 pt-10">
+              <legend class="mb-4 font-display text-lg font-semibold text-white">Links &amp; motivation</legend>
+              <div class="grid grid-cols-1 gap-4">
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">GitHub Profile</span>
+                  <input class="zas-input" type="url" name="github" inputmode="url" placeholder="https://github.com/username" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Portfolio / LinkedIn Link</span>
+                  <input class="zas-input" type="url" name="portfolio_link" inputmode="url" placeholder="https://linkedin.com/in/… or portfolio URL" />
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Why do you want to join ZAS Tech? <span class="text-teal-400">*</span></span>
+                  <textarea
+                    class="zas-textarea min-h-[140px] resize-y"
+                    name="motivation"
+                    required
+                    minlength="40"
+                    maxlength="4000"
+                    placeholder="Tell us about your goals, what you hope to learn, and why ZAS Tech is the right fit."
+                  ></textarea>
+                  <span class="text-[11px] text-slate-600">Minimum 40 characters.</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-10 space-y-5 border-0 border-t border-white/10 p-0 pt-10">
+              <legend class="mb-4 font-display text-lg font-semibold text-white">CV &amp; availability</legend>
+              <label class="flex flex-col gap-2">
+                <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Upload CV (PDF only) <span class="text-teal-400">*</span></span>
+                <input
+                  class="zas-file"
+                  type="file"
+                  name="cv"
+                  accept="application/pdf,.pdf"
+                  required
+                />
+                <span class="text-[11px] text-slate-600">Maximum file size depends on your Netlify plan (typically up to 10 MB).</span>
+              </label>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Availability per week <span class="text-teal-400">*</span></span>
+                  <select class="zas-select" name="availability_hours" required>
+                    <option value="" disabled selected>Hours per week</option>
+                    <option value="10–15 hours">10–15 hours</option>
+                    <option value="15–20 hours">15–20 hours</option>
+                    <option value="20–30 hours">20–30 hours</option>
+                    <option value="30+ hours">30+ hours</option>
+                    <option value="Full-time">Full-time</option>
+                  </select>
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-slate-500">Paid internship interest <span class="text-teal-400">*</span></span>
+                  <select class="zas-select" name="paid_interest" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="Yes">Yes, I am interested</option>
+                    <option value="No">No, unpaid is fine</option>
+                    <option value="Either">Either — open to both</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="mt-10 border-t border-white/10 pt-8">
+              <label class="flex cursor-pointer items-start gap-3">
+                <input
+                  class="mt-1 h-4 w-4 shrink-0 rounded border-white/20 bg-zas-night text-teal-500 focus:ring-teal-400/40"
+                  type="checkbox"
+                  name="confirm"
+                  value="yes"
+                  required
+                />
+                <span class="text-sm leading-relaxed text-slate-400">
+                  I confirm that the information provided is accurate and I understand that selection is interview-based.
+                  I agree that ZAS Tech may contact me using the details above regarding my application.
+                  <span class="text-teal-400">*</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <button
+                class="inline-flex items-center justify-center rounded-full border border-teal-400/50 bg-gradient-to-r from-teal-500/90 to-cyan-500/85 px-8 py-3.5 font-semibold text-zas-night shadow-glow transition hover:shadow-[0_0_40px_rgba(45,212,191,0.35)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-400/35 disabled:opacity-50"
+                type="submit"
+              >
+                Submit application
+              </button>
+              <a
+                class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 font-semibold text-white transition hover:border-teal-400/35 hover:bg-teal-500/10"
+                href="./index.html#contact"
+                >Questions? Contact us</a
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/[0.06] bg-black/50 py-8 backdrop-blur-2xl">
+      <div class="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 sm:text-left">
+        <p class="text-sm text-slate-500">© <span id="y"></span> ZAS Tech</p>
+        <div class="flex flex-wrap justify-center gap-3 text-sm">
+          <a class="text-slate-400 transition hover:text-white" href="./index.html#top">Home</a>
+          <a class="text-slate-400 transition hover:text-white" href="./internship.html">Internship</a>
+          <a class="text-slate-400 transition hover:text-white" href="./index.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Static form for Netlify build-time detection (do not remove) -->
+    <form name="internship" netlify netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="internship" />
+      <input name="bot-field" />
+      <input name="full_name" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="city" />
+      <input name="university" />
+      <input name="department" />
+      <input name="academic_year" />
+      <input name="internship_track" />
+      <input name="skill_level" />
+      <textarea name="technologies"></textarea>
+      <input name="github" />
+      <input name="portfolio_link" />
+      <textarea name="motivation"></textarea>
+      <input name="cv" type="file" />
+      <input name="availability_hours" />
+      <input name="paid_interest" />
+      <input name="confirm" />
+    </form>
+
+    <script>
+      document.getElementById("y").textContent = String(new Date().getFullYear());
+    </script>
+    <script src="./static/main.js" defer></script>
+  </body>
+</html>

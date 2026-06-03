@@ -399,17 +399,35 @@
 
   // Live Server / simple static hosts reject POST to .html (HTTP 405). Netlify handles POST in production.
   (() => {
-    const form = document.querySelector('form[name="contact"]');
-    if (!(form instanceof HTMLFormElement)) return;
     const host = window.location.hostname;
     const isLocal = host === "localhost" || host === "127.0.0.1" || host === "";
-    if (!isLocal) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let dest = (form.getAttribute("action") || "thank-you.html").trim();
-      if (dest.startsWith("/")) dest = dest.slice(1) || "thank-you.html";
-      window.location.href = dest;
-    });
+
+    const netlifyForms = document.querySelectorAll('form[data-netlify="true"]');
+    for (const form of netlifyForms) {
+      if (!(form instanceof HTMLFormElement)) continue;
+
+      form.addEventListener("submit", (e) => {
+        const cv = form.querySelector('input[type="file"][name="cv"]');
+        if (cv instanceof HTMLInputElement && cv.files?.[0]) {
+          const file = cv.files[0];
+          const isPdf =
+            file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+          if (!isPdf) {
+            e.preventDefault();
+            cv.setCustomValidity("Please upload your CV as a PDF file.");
+            cv.reportValidity();
+            return;
+          }
+          cv.setCustomValidity("");
+        }
+
+        if (!isLocal) return;
+        e.preventDefault();
+        let dest = (form.getAttribute("action") || "thank-you.html").trim();
+        if (dest.startsWith("/")) dest = dest.slice(1) || "thank-you.html";
+        window.location.href = dest;
+      });
+    }
   })();
 })();
 
