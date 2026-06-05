@@ -10,12 +10,12 @@
   const STRINGS = {
     en: {
       meta: {
-        title: "ZAS Tech — Empowering Businesses with Digital Services",
+        title: "ZAS Tech | Software Development, AI & Digital Solutions",
         description:
-          "ZAS Tech helps businesses with software, websites and apps, AI, online safety, smart camera solutions, and moving work online.",
-        ogTitle: "ZAS Tech — Digital Services & Innovation",
+          "ZAS Tech provides software development, mobile applications, AI solutions, websites, ERP systems, cybersecurity services and digital transformation solutions.",
+        ogTitle: "ZAS Tech | Software Development, AI & Digital Solutions",
         ogDesc:
-          "Software, websites and apps, AI, cybersecurity, camera-based solutions, and helping your business go digital.",
+          "ZAS Tech provides software development, mobile applications, AI solutions, websites, ERP systems, cybersecurity services and digital transformation solutions.",
       },
       skip: "Skip to content",
       nav: {
@@ -233,8 +233,8 @@
         rights: "All rights reserved.",
       },
       thanks: {
-        title: "Message received — ZAS Tech",
-        metaDesc: "Thank you — ZAS Tech has received your message.",
+        title: "Message Received | ZAS Tech",
+        metaDesc: "Thank you for contacting ZAS Tech. We have received your message and will respond with clear next steps.",
         h1: "Message received",
         p: "We’ll respond with clear next steps.",
         home: "Back to Home",
@@ -780,6 +780,14 @@
     const ogD = document.querySelector('meta[property="og:description"]');
     if (ogD && !ogD.hasAttribute("data-i18n")) {
       ogD.setAttribute("content", t(lang, "meta.ogDesc"));
+    }
+    const twT = document.querySelector('meta[name="twitter:title"]');
+    if (twT && !twT.hasAttribute("data-i18n")) {
+      twT.setAttribute("content", t(lang, "meta.ogTitle"));
+    }
+    const twD = document.querySelector('meta[name="twitter:description"]');
+    if (twD && !twD.hasAttribute("data-i18n")) {
+      twD.setAttribute("content", t(lang, "meta.ogDesc"));
     }
   }
 

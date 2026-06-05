@@ -1,0 +1,9 @@
+{
+  "name": "zas-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "siteUrl": "https://zas-tech.krd",
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ZAS Tech",
+    "url": "https://zas-tech.krd",
+    "logo": "https://zas-tech.krd/logo.png",
+    "description": "ZAS Tech provides software development, mobile applications, AI solutions, websites, ERP systems and IT consulting services.",
+    "email": "info@zas-tech.krd",
+    "telephone": "+9647501514519",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IQ"
+    },
+    "sameAs": [
+      "https://www.facebook.com/share/1CprYSZifP/?mibextid=wwXIfr",
+      "https://www.instagram.com/zas__.tech?igsh=MWtpenBnaG4xMHQ1aQ=="
+    ]
+  },
+  "defaults": {
+    "changefreq": "monthly",
+    "priority": 0.5
+  },
+  "pages": {
+    "index.html": {
+      "path": "/",
+      "changefreq": "weekly",
+      "priority": 1.0,
+      "title": "ZAS Tech | Software Development, AI & Digital Solutions",
+      "description": "ZAS Tech provides software development, mobile applications, AI solutions, websites, ERP systems, cybersecurity services and digital transformation solutions.",
+      "ogImage": "https://zas-tech.krd/assets/logo.JPG"
+    },
+    "internship.html": {
+      "path": "/internship.html",
+      "changefreq": "weekly",
+      "priority": 0.9,
+      "title": "Internship Application | ZAS Tech Internship Program",
+      "description": "Apply to the ZAS Tech Internship Program. Professional mentorship, real project exposure, and interview-based selection for students and fresh graduates in Iraq.",
+      "ogImage": "https://zas-tech.krd/assets/logo.JPG"
+    },
+    "thank-you.html": {
+      "path": "/thank-you.html",
+      "changefreq": "yearly",
+      "priority": 0.2,
+      "title": "Message Received | ZAS Tech",
+      "description": "Thank you for contacting ZAS Tech. We have received your message and will respond with clear next steps.",
+      "ogImage": "https://zas-tech.krd/assets/logo.JPG",
+      "robots": "noindex, follow"
+    },
+    "internship-thank-you.html": {
+      "path": "/internship-thank-you.html",
+      "changefreq": "yearly",
+      "priority": 0.2,
+      "title": "Application Received | ZAS Tech Internship",
+      "description": "Thank you for applying to the ZAS Tech Internship Program. Our team will review your application and contact shortlisted candidates.",
+      "ogImage": "https://zas-tech.krd/assets/logo.JPG",
+      "robots": "noindex, follow"
+    }
+  },
+  "excludeFromSitemap": []
+}

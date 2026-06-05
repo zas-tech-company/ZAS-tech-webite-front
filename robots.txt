@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zas.tech/sitemap.xml
-
+Sitemap: https://zas-tech.krd/sitemap.xml
