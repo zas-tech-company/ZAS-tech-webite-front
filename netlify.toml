@@ -2,6 +2,12 @@
   command = "npm run generate:sitemap"
   publish = "."
 
+# Legacy duplicate thank-you page — canonical URL is /thank-you.html
+[[redirects]]
+  from = "/public/thank-you.html"
+  to = "/thank-you.html"
+  status = 301
+
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
