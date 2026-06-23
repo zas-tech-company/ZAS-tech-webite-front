@@ -133,7 +133,6 @@
           "The founders who set direction, build the product, and keep delivery focused on what clients need.",
         zring: { name: "Zring Said Qader", role: "Chief Executive Officer (CEO)" },
         ahmad: { name: "Ahmad Shwan", role: "Chief Technology Officer (CTO)" },
-        Slvar: { name: "Slvar Arif Afandi", role: "Chief Product Officer (CPO)" },
       },
       process: {
         kicker: "How we work",
@@ -367,7 +366,6 @@
           "دامەزرێنەران کە ئاراستە دیاری دەکەن، بەرھەم دروست دەکەن، و گەیاندن لەسەر پێداویستی کڕیار دەمێنێتەوە.",
         zring: { name: "Zring Said Qader", role: "بەڕێوەبەری جێبەجێ (CEO)" },
         ahmad: { name: "Ahmad Shwan", role: "بەڕێوەبەری تەکنەلۆژیا (CTO)" },
-        Slvar: { name: "Slvar Arif Afandi", role: "بەڕێوەبەری بەرھەم (CPO)" },
       },
       process: {
         kicker: "چۆنیەتی کارکردنمان",
@@ -601,7 +599,6 @@
           "المؤسسون الذين يحددون الاتجاه ويبنون المنتج ويبقون التسليم مركزًا على ما يحتاجه العملاء.",
         zring: { name: "Zring Said Qader", role: "الرئيس التنفيذي (CEO)" },
         ahmad: { name: "Ahmad Shwan", role: "الرئيس التقني (CTO)" },
-        Slvar: { name: "Slvar Arif Afandi", role: "الرئيس التنفيذي للمنتج (CPO)" },
       },
       process: {
         kicker: "كيف نعمل",
